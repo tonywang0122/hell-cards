@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Gacha - 抽卡包</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F8F6F3;
+  --bg2: #FFFDFB;
+  --text: #333;
+  --text-dim: #999;
+  --pink: #E8687D;
+  --purple: #9B7FD4;
+  --gold: #D4A36A;
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.13);
+}
+
+body {
+  font-family: 'Georgia', 'Hiragino Mincho ProN', 'Noto Serif TC', serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== SCREENS ===== */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; align-items: center; }
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  width: 100%; padding: 16px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  position: sticky; top: 0; z-index: 100;
+}
+.top-bar h1 {
+  font-size: 1.3rem; cursor: pointer; letter-spacing: 2px;
+  color: var(--pink); font-weight: 700;
+}
+.top-bar h1:hover { opacity: 0.7; }
+.btn-nav {
+  background: none; border: 1px solid #ccc; color: var(--text);
+  padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;
+  transition: all 0.3s; font-family: inherit;
+}
+.btn-nav:hover { background: var(--pink); color: #fff; border-color: var(--pink); }
+
+/* ===== HOME ===== */
+.home-content {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 40px 20px; gap: 30px;
+}
+.home-title {
+  font-size: 2.5rem; letter-spacing: 4px; color: var(--pink);
+  text-shadow: 0 2px 10px rgba(232,104,125,0.2);
+}
+.home-subtitle { color: var(--text-dim); font-size: 1rem; margin-top: -10px; }
+
+/* Pack on home */
+.pack-wrapper {
+  position: relative; cursor: pointer;
+  width: 200px; height: 280px; perspective: 600px;
+}
+.pack-box {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 40px rgba(155,127,212,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.pack-box::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+}
+.pack-box:hover { transform: translateY(-8px) rotateX(5deg); box-shadow: 0 16px 60px rgba(155,127,212,0.4); }
+.pack-box .pack-icon { font-size: 4rem; position: relative; z-index: 1; }
+.pack-label {
+  font-size: 1rem; color: var(--pink); margin-top: 10px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff; border: none; padding: 14px 36px; border-radius: 30px;
+  font-size: 1.1rem; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 20px rgba(232,104,125,0.3);
+  transition: all 0.3s; letter-spacing: 1px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,104,125,0.4); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  background: #fff; color: var(--text); border: 1px solid #ddd;
+  padding: 12px 28px; border-radius: 30px; font-size: 1rem;
+  cursor: pointer; font-family: inherit; transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: var(--pink); color: var(--pink); }
+
+/* ===== GACHA SCREEN ===== */
+#screen-gacha {
+  position: relative; overflow: hidden;
+}
+.gacha-content {
+  flex: 1; display: flex; flex-direction: row; align-items: center;
+  justify-content: center;
+  padding: 20px 40px; gap: 32px;
+  width: 100%; max-width: 900px; position: relative;
+}
+
+/* Preview strip - LEFT COLUMN */
+.preview-strip {
+  display: flex; flex-direction: column; gap: 10px; justify-content: center;
+  padding: 20px 0; flex-shrink: 0;
+}
+.preview-slot {
+  width: 80px; height: 112px; border-radius: 10px;
+  background: #ece8e3; border: 2.5px solid transparent;
+  overflow: hidden; transition: all 0.4s;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.preview-slot.active-slot { border-color: var(--pink); box-shadow: 0 0 16px rgba(232,104,125,0.35); transform: scale(1.05); }
+.preview-slot.filled { background: #fff; border-color: #ddd; }
+.preview-slot img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 7px;
+}
+.preview-slot .rarity-dot {
+  position: absolute; top: 3px; right: 3px;
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.8);
+  font-size: 7px; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: bold;
+}
+
+/* Main card area - RIGHT COLUMN */
+.gacha-main {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 16px; position: relative;
+}
+
+.gacha-progress { color: var(--text-dim); font-size: 0.95rem; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .gacha-content { flex-direction: column; align-items: center; padding: 12px; gap: 16px; }
+  .preview-strip { flex-direction: row; gap: 6px; padding: 0; }
+  .preview-slot { width: 52px; height: 73px; }
+}
+
+/* Card flip area - 75vh height */
+.card-stage {
+  height: 75vh; width: calc(75vh * 0.7); perspective: 1200px;
+  position: relative; margin: 10px 0;
+  max-height: 600px; max-width: 420px;
+}
+@media (max-width: 640px) {
+  .card-stage { height: 65vh; width: calc(65vh * 0.7); }
+}
+
+.card-inner {
+  width: 100%; height: 100%; position: relative;
+  transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+  cursor: pointer;
+}
+.card-inner.flipped { transform: rotateY(180deg); }
+.card-inner.no-transition { transition: none; }
+
+.card-face {
+  position: absolute; inset: 0; backface-visibility: hidden;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.card-back {
+  background: linear-gradient(135deg, #5B4A8A, #8B6FB0, #5B4A8A);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+}
+.card-back::before {
+  content: ''; position: absolute; inset: 8px;
+  border: 2px solid rgba(255,255,255,0.2); border-radius: 12px;
+}
+.card-back-icon { font-size: 3rem; opacity: 0.5; }
+.card-back-text { color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 8px; letter-spacing: 2px; }
+
+.card-front {
+  transform: rotateY(180deg);
+  background: #fff;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.card-front img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.card-front .rarity-badge {
+  position: absolute; top: 10px; right: 10px;
+  padding: 4px 12px; border-radius: 12px;
+  font-size: 0.75rem; font-weight: bold; color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+/* Card glow effect - ramp up during pre-flip */
+.card-inner::before {
+  content: ''; position: absolute; inset: -6px;
+  border-radius: 22px; opacity: 0;
+  z-index: -1; transition: opacity 0.3s, box-shadow 0.3s;
+}
+.card-inner.pre-flip::before { opacity: 1; }
+.card-inner.glow-N::before {
+  box-shadow: 0 0 30px rgba(200,200,200,0.5), 0 0 60px rgba(200,200,200,0.2);
+  animation: glowPulseN 0.6s ease-in-out infinite alternate;
+}
+.card-inner.glow-R::before {
+  box-shadow: 0 0 40px rgba(66,135,245,0.7), 0 0 80px rgba(66,135,245,0.3);
+  animation: glowPulseR 0.5s ease-in-out infinite alternate;
+}
+.card-inner.glow-SR::before {
+  box-shadow: 0 0 50px rgba(155,127,212,0.8), 0 0 100px rgba(212,163,106,0.5), 0 0 150px rgba(232,104,125,0.3);
+  animation: glowPulseSR 0.4s ease-in-out infinite alternate;
+}
+.card-inner.glow-SSR::before {
+  box-shadow: 0 0 80px rgba(255,215,0,0.9), 0 0 160px rgba(255,100,100,0.5), 0 0 240px rgba(155,127,212,0.3);
+  animation: glowPulseSSR 0.3s ease-in-out infinite alternate;
+}
+@keyframes glowPulseN {
+  to { box-shadow: 0 0 40px rgba(200,200,200,0.7), 0 0 80px rgba(200,200,200,0.3); }
+}
+@keyframes glowPulseR {
+  to { box-shadow: 0 0 60px rgba(66,135,245,0.9), 0 0 120px rgba(66,135,245,0.4); }
+}
+@keyframes glowPulseSR {
+  to { box-shadow: 0 0 80px rgba(155,127,212,1), 0 0 160px rgba(212,163,106,0.6), 0 0 200px rgba(232,104,125,0.4); }
+}
+@keyframes glowPulseSSR {
+  to { box-shadow: 0 0 120px rgba(255,215,0,1), 0 0 240px rgba(255,100,100,0.7), 0 0 320px rgba(155,127,212,0.5); }
+}
+
+.gacha-hint { color: var(--text-dim); font-size: 0.85rem; min-height: 24px; }
+
+.btn-next {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: #fff; border: none; padding: 12px 32px; border-radius: 25px;
+  font-size: 1rem; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 15px rgba(232,104,125,0.3);
+  transition: all 0.3s; opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+}
+.btn-next.visible {
+  opacity: 1; pointer-events: auto; transform: translateY(0);
+}
+.btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232,104,125,0.4); }
+
+/* ===== OPENING PACK ANIMATION ===== */
+.pack-opening-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0); display: none;
+  align-items: center; justify-content: center; flex-direction: column;
+  transition: background 0.8s;
+}
+.pack-opening-overlay.active { display: flex; }
+.pack-opening-overlay.dimmed { background: rgba(0,0,0,0.75); }
+
+.opening-pack {
+  width: 220px; height: 310px;
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--gold));
+  background-size: 300% 300%;
+  border-radius: 18px; position: relative; cursor: pointer;
+  box-shadow: 0 8px 60px rgba(155,127,212,0.5);
+  overflow: visible; transition: transform 0.3s, box-shadow 0.3s;
+}
+.opening-pack::before {
+  content: ''; position: absolute; inset: 0; border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%);
+}
+.opening-pack::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 21px;
+  background: conic-gradient(from 0deg, var(--pink), var(--gold), var(--purple), var(--pink));
+  z-index: -1; opacity: 0; transition: opacity 0.5s;
+  filter: blur(8px);
+}
+.opening-pack .pack-icon { font-size: 4.5rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 1; }
+.opening-pack .pack-shine {
+  position: absolute; top: -100%; left: -100%; width: 300%; height: 300%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.3), transparent 60%);
+  opacity: 0; z-index: 2; pointer-events: none;
+}
+
+/* Hovering idle glow */
+.opening-pack.idle { animation: packIdle 3s ease-in-out infinite; }
+@keyframes packIdle {
+  0%,100% { transform: translateY(0) rotate(0deg); box-shadow: 0 8px 60px rgba(155,127,212,0.4); background-position: 0% 50%; }
+  50% { transform: translateY(-8px) rotate(1deg); box-shadow: 0 16px 80px rgba(232,104,125,0.5); background-position: 100% 50%; }
+}
+
+/* Phase: glow build-up */
+.opening-pack.phase-glow { animation: packGlowBuild 1.5s ease-in forwards; }
+.opening-pack.phase-glow::after { opacity: 1; }
+@keyframes packGlowBuild {
+  0% { box-shadow: 0 8px 40px rgba(155,127,212,0.3); }
+  50% { box-shadow: 0 0 60px rgba(232,104,125,0.6), 0 0 120px rgba(155,127,212,0.4); }
+  100% { box-shadow: 0 0 100px rgba(255,215,0,0.7), 0 0 200px rgba(232,104,125,0.5), 0 0 300px rgba(155,127,212,0.3); }
+}
+
+/* Phase: crack + shake */
+.opening-pack.phase-crack { animation: packCrackShake 1.2s ease-in-out; }
+@keyframes packCrackShake {
+  0% { transform: translate(0,0) rotate(0); }
+  5% { transform: translate(-3px,0) rotate(-1deg); }
+  10% { transform: translate(3px,0) rotate(1deg); }
+  15% { transform: translate(-4px,1px) rotate(-1.5deg); }
+  20% { transform: translate(4px,-1px) rotate(1.5deg); }
+  25% { transform: translate(-5px,0) rotate(-2deg); }
+  30% { transform: translate(5px,0) rotate(2deg); }
+  35% { transform: translate(-6px,1px) rotate(-2.5deg); }
+  40% { transform: translate(6px,-1px) rotate(2.5deg); }
+  45% { transform: translate(-7px,0) rotate(-3deg); }
+  50% { transform: translate(7px,0) rotate(3deg); }
+  55% { transform: translate(-8px,1px) rotate(-3deg); }
+  60% { transform: translate(8px,-1px) rotate(3deg); }
+  65% { transform: translate(-10px,0) rotate(-4deg); }
+  70% { transform: translate(10px,0) rotate(4deg); }
+  75% { transform: translate(-12px,2px) rotate(-4deg); }
+  80% { transform: translate(12px,-2px) rotate(4deg); }
+  85% { transform: translate(-14px,0) rotate(-5deg); }
+  90% { transform: translate(14px,0) rotate(5deg); }
+  95% { transform: translate(-8px,0) rotate(-2deg); }
+  100% { transform: translate(0,0) rotate(0); }
+}
+
+/* Phase: explode */
+.opening-pack.phase-explode { animation: packExplodeFinal 0.5s ease-in forwards; }
+@keyframes packExplodeFinal {
+  0% { transform: scale(1); opacity: 1; filter: brightness(1); }
+  40% { transform: scale(1.4); opacity: 1; filter: brightness(3); }
+  100% { transform: scale(2.5); opacity: 0; filter: brightness(5); }
+}
+
+/* Crack lines — visible during phase-crack and phase-explode */
+.crack-line {
+  position: absolute; background: #fff;
+  z-index: 10; opacity: 0;
+  box-shadow: 0 0 12px #fff, 0 0 24px rgba(255,215,0,0.8), 0 0 48px rgba(255,215,0,0.4);
+  transition: opacity 0.2s;
+}
+.opening-pack.phase-crack .crack-line {
+  opacity: 1;
+  animation: crackFlicker 0.12s ease-in-out infinite alternate;
+}
+@keyframes crackFlicker {
+  from { opacity: 0.7; box-shadow: 0 0 12px #fff, 0 0 24px rgba(255,215,0,0.6); }
+  to { opacity: 1; box-shadow: 0 0 20px #fff, 0 0 40px rgba(255,215,0,1), 0 0 60px rgba(255,100,100,0.5); }
+}
+
+/* Light rays shooting from cracks */
+.crack-ray {
+  position: absolute; z-index: 9; opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.8), rgba(255,255,255,0.9), rgba(255,215,0,0.8), transparent);
+  filter: blur(4px); pointer-events: none;
+}
+.opening-pack.phase-crack .crack-ray {
+  opacity: 1;
+  animation: rayShoot 0.2s ease-in-out infinite alternate;
+}
+@keyframes rayShoot {
+  from { opacity: 0.5; filter: blur(4px); transform: scaleX(0.9); }
+  to { opacity: 1; filter: blur(6px); transform: scaleX(1.15); }
+}
+
+.opening-pack-hint {
+  color: rgba(255,255,255,0.8); font-size: 1rem; margin-top: 24px;
+  animation: pulse 1.5s ease-in-out infinite; letter-spacing: 2px;
+}
+
+/* Particle canvas */
+#particle-canvas {
+  position: fixed; inset: 0; z-index: 201; pointer-events: none;
+}
+
+/* ===== CARD REVEAL EFFECTS ===== */
+
+/* Light beam */
+.light-beam {
+  position: fixed; left: 50%; top: 0; width: 4px; height: 100vh;
+  transform: translateX(-50%); z-index: 50; pointer-events: none;
+  opacity: 0;
+}
+.light-beam.active-R {
+  background: linear-gradient(to top, transparent 5%, rgba(66,135,245,0.5), rgba(66,135,245,0.9), rgba(66,135,245,0.5), transparent 95%);
+  width: 12px; animation: beamFlash 1.2s ease-out forwards;
+}
+.light-beam.active-SR {
+  background: linear-gradient(to top, transparent 5%, rgba(155,127,212,0.6), rgba(212,163,106,0.95), rgba(155,127,212,0.6), transparent 95%);
+  width: 24px; animation: beamFlash 1.5s ease-out forwards;
+}
+.light-beam.active-SSR {
+  background: linear-gradient(to top, transparent 5%, rgba(255,215,0,0.7), rgba(255,255,255,1), rgba(255,215,0,0.7), transparent 95%);
+  width: 60px; animation: beamFlash 2s ease-out forwards;
+}
+@keyframes beamFlash {
+  0% { opacity: 0; transform: translateX(-50%) scaleX(0.1); }
+  15% { opacity: 1; transform: translateX(-50%) scaleX(1); }
+  40% { opacity: 0.9; transform: translateX(-50%) scaleX(1.5); }
+  100% { opacity: 0; transform: translateX(-50%) scaleX(6); }
+}
+
+/* Spiral rings */
+.spiral-overlay {
+  position: fixed; inset: 0; z-index: 49; pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.spiral-ring {
+  width: 300px; height: 300px; border-radius: 50%;
+  border: 3px solid transparent; position: absolute;
+  opacity: 0;
+}
+.spiral-ring.active-SR {
+  border-width: 4px;
+  border-top-color: var(--purple); border-right-color: var(--gold);
+  animation: spiralSpin 1.5s ease-out forwards;
+}
+.spiral-ring.active-SSR {
+  border-width: 5px;
+  border-top-color: gold; border-right-color: #ff6b6b; border-bottom-color: #4ecdc4; border-left-color: #9B7FD4;
+  animation: spiralSpin 2s ease-out forwards;
+}
+@keyframes spiralSpin {
+  0% { opacity: 0; transform: scale(0.1) rotate(0deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: scale(3) rotate(1080deg); }
+}
+
+/* === MEGA GLOW AURA behind card after reveal === */
+.card-aura {
+  position: absolute; inset: -60px; border-radius: 30px;
+  z-index: -2; opacity: 0; pointer-events: none;
+  transition: opacity 0.5s;
+  filter: blur(40px);
+}
+.card-aura.aura-N {
+  opacity: 0.4;
+  background: radial-gradient(ellipse, rgba(200,200,210,0.5), transparent 70%);
+}
+.card-aura.aura-R {
+  opacity: 0.6;
+  background: radial-gradient(ellipse, rgba(66,135,245,0.6), rgba(66,135,245,0.2) 50%, transparent 75%);
+  animation: auraPulseR 2s ease-in-out infinite alternate;
+}
+.card-aura.aura-SR {
+  opacity: 0.8; inset: -80px; filter: blur(50px);
+  background: radial-gradient(ellipse, rgba(155,127,212,0.7), rgba(212,163,106,0.4) 40%, rgba(232,104,125,0.2) 60%, transparent 80%);
+  animation: auraPulseSR 1.5s ease-in-out infinite alternate;
+}
+.card-aura.aura-SSR {
+  opacity: 1; inset: -120px; filter: blur(60px);
+  background: conic-gradient(from 0deg, rgba(255,0,0,0.5), rgba(255,215,0,0.6), rgba(0,255,100,0.5), rgba(0,150,255,0.5), rgba(150,0,255,0.5), rgba(255,0,150,0.5), rgba(255,0,0,0.5));
+  animation: auraSSR 3s linear infinite;
+}
+@keyframes auraPulseR {
+  from { opacity: 0.5; inset: -60px; }
+  to { opacity: 0.7; inset: -75px; }
+}
+@keyframes auraPulseSR {
+  from { opacity: 0.6; inset: -80px; filter: blur(50px); }
+  to { opacity: 0.9; inset: -100px; filter: blur(60px); }
+}
+@keyframes auraSSR {
+  0% { opacity: 0.9; transform: rotate(0deg) scale(1); }
+  50% { opacity: 1; transform: rotate(180deg) scale(1.1); }
+  100% { opacity: 0.9; transform: rotate(360deg) scale(1); }
+}
+
+/* SSR rainbow border on card */
+.rainbow-border {
+  position: absolute; inset: -8px; border-radius: 24px;
+  z-index: -1; opacity: 0; pointer-events: none;
+  background: conic-gradient(from 0deg, #ff0000, #ff8800, #ffff00, #00ff00, #0088ff, #8800ff, #ff0000);
+  filter: blur(4px);
+}
+.rainbow-border.active {
+  opacity: 1;
+  animation: rainbowSpin 1.5s linear infinite;
+}
+@keyframes rainbowSpin { to { transform: rotate(360deg); } }
+
+/* Full screen flash */
+.fullscreen-flash {
+  position: fixed; inset: 0; z-index: 48; pointer-events: none; opacity: 0;
+}
+.fullscreen-flash.active-N {
+  background: rgba(255,255,255,0.5);
+  animation: flashOnce 0.4s ease-out forwards;
+}
+.fullscreen-flash.active-R {
+  background: radial-gradient(circle, rgba(66,135,245,0.4), rgba(255,255,255,0.2), transparent);
+  animation: flashOnce 0.6s ease-out forwards;
+}
+.fullscreen-flash.active-SR {
+  background: radial-gradient(circle, rgba(155,127,212,0.5), rgba(212,163,106,0.3), transparent);
+  animation: flashOnce 0.7s ease-out forwards;
+}
+.fullscreen-flash.active-SSR {
+  background: radial-gradient(circle, rgba(255,215,0,0.9), rgba(255,255,255,0.5), rgba(255,215,0,0.2), transparent);
+  animation: flashSSR 1s ease-out forwards;
+}
+@keyframes flashOnce { 0% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes flashSSR {
+  0% { opacity: 1; } 30% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0; }
+}
+
+/* Shake */
+@keyframes shakeCard {
+  0%,100% { transform: rotateY(180deg) translate(0,0); }
+  10% { transform: rotateY(180deg) translate(-4px,-3px); }
+  20% { transform: rotateY(180deg) translate(4px,3px); }
+  30% { transform: rotateY(180deg) translate(-3px,4px); }
+  40% { transform: rotateY(180deg) translate(3px,-4px); }
+  50% { transform: rotateY(180deg) translate(-5px,2px); }
+  60% { transform: rotateY(180deg) translate(5px,-2px); }
+  70% { transform: rotateY(180deg) translate(-2px,4px); }
+  80% { transform: rotateY(180deg) translate(2px,-3px); }
+  90% { transform: rotateY(180deg) translate(-3px,3px); }
+}
+
+/* ===== RESULT SCREEN ===== */
+.result-content {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 30px 20px; gap: 24px; width: 100%; max-width: 700px;
+}
+.result-title { font-size: 1.5rem; color: var(--pink); letter-spacing: 2px; }
+.result-cards {
+  display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+}
+.result-card {
+  width: 120px; border-radius: 12px; overflow: hidden;
+  box-shadow: var(--card-shadow); background: #fff;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.result-card:hover { transform: translateY(-5px); }
+.result-card img { width: 100%; aspect-ratio: 7/10; object-fit: cover; display: block; }
+.result-card .result-rarity {
+  text-align: center; padding: 6px; font-size: 0.75rem; font-weight: bold;
+}
+.result-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+/* ===== COLLECTION ===== */
+.collection-content {
+  flex: 1; padding: 20px; width: 100%; max-width: 900px;
+}
+.coll-progress {
+  text-align: center; margin-bottom: 20px;
+}
+.coll-progress-text { font-size: 1.1rem; margin-bottom: 8px; }
+.progress-bar {
+  width: 100%; max-width: 400px; height: 10px; background: #e8e4df;
+  border-radius: 5px; overflow: hidden; margin: 0 auto;
+}
+.progress-fill {
+  height: 100%; border-radius: 5px;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  transition: width 0.5s;
+}
+
+.filter-bar {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 24px;
+}
+.filter-btn {
+  padding: 6px 16px; border-radius: 20px; border: 1px solid #ddd;
+  background: #fff; color: var(--text); cursor: pointer; font-size: 0.8rem;
+  font-family: inherit; transition: all 0.3s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--pink); color: #fff; border-color: var(--pink);
+}
+
+.coll-section-title {
+  font-size: 1.1rem; margin: 20px 0 12px; padding-bottom: 8px;
+  border-bottom: 2px solid #eee;
+}
+.coll-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px; margin-bottom: 24px;
+}
+.coll-card {
+  aspect-ratio: 7/10; border-radius: 10px; overflow: hidden;
+  background: #e8e4df; position: relative; cursor: pointer;
+  transition: transform 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.coll-card:hover { transform: translateY(-3px); }
+.coll-card img { width: 100%; height: 100%; object-fit: cover; }
+.coll-card.locked {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: #ccc; cursor: default;
+}
+.coll-card.locked:hover { transform: none; }
+.coll-card .coll-rarity-badge {
+  position: absolute; top: 4px; right: 4px;
+  padding: 2px 6px; border-radius: 6px;
+  font-size: 0.6rem; font-weight: bold; color: #fff;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.85); display: none;
+  align-items: center; justify-content: center;
+  flex-direction: column; cursor: pointer;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 90vw; max-height: 80vh; border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.lightbox .lb-rarity {
+  margin-top: 12px; padding: 6px 20px; border-radius: 20px;
+  font-size: 0.9rem; font-weight: bold; color: #fff;
+}
+
+/* Rarity colors */
+.rarity-N { background: rgba(160,160,160,0.8); }
+.rarity-R { background: rgba(66,135,245,0.8); }
+.rarity-SR { background: linear-gradient(135deg, rgba(155,127,212,0.9), rgba(212,163,106,0.9)); }
+.rarity-SSR { background: linear-gradient(135deg, rgba(255,215,0,0.9), rgba(255,100,100,0.9)); }
+
+/* Sweeplight for card flip */
+.sweep-light {
+  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  z-index: 10; pointer-events: none;
+}
+.card-inner.flipped .sweep-light {
+  animation: sweepAcross 0.6s 0.2s ease-out forwards;
+}
+@keyframes sweepAcross {
+  to { left: 150%; }
+}
+
+/* Entry animation for card */
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: translateX(60px) scale(0.9); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes cardFlyToSlot {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Pack drop animation */
+@keyframes packDrop {
+  0% { transform: translateY(-120vh) rotate(-10deg); }
+  50% { transform: translateY(0) rotate(0); }
+  65% { transform: translateY(-40px) rotate(2deg); }
+  80% { transform: translateY(0) rotate(0); }
+  90% { transform: translateY(-15px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+@keyframes shineSweep {
+  0% { transform: translate(-50%, -50%) rotate(30deg); opacity: 0; }
+  30% { opacity: 0.8; }
+  100% { transform: translate(50%, 50%) rotate(30deg); opacity: 0; }
+}
+
+/* Pre-flip lift */
+@keyframes preLift {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-8px) scale(1.02); }
+}
+.card-inner.pre-flip {
+  animation: preLift 0.5s ease-out forwards;
+}
+.card-inner.glow-SR.pre-flip, .card-inner.glow-SSR.pre-flip {
+  animation: preLift 0.5s ease-out forwards, preShake 0.15s ease-in-out 3;
+}
+@keyframes preShake {
+  0%,100% { transform: translateY(-8px) scale(1.02) rotate(0); }
+  25% { transform: translateY(-8px) scale(1.02) rotate(-1.5deg); }
+  75% { transform: translateY(-8px) scale(1.02) rotate(1.5deg); }
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .home-title { font-size: 1.8rem; }
+  .pack-wrapper { width: 160px; height: 220px; }
+  .preview-slot { width: 52px; height: 73px; }
+  .result-card { width: 90px; }
+  .coll-grid { grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== PARTICLE CANVAS ===== -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ===== FULL SCREEN FLASH ===== -->
+<div class="fullscreen-flash" id="fullscreen-flash"></div>
+
+<!-- ===== LIGHT BEAM ===== -->
+<div class="light-beam" id="light-beam"></div>
+
+<!-- ===== SPIRAL ===== -->
+<div class="spiral-overlay" id="spiral-overlay">
+  <div class="spiral-ring" id="spiral-ring"></div>
+  <div class="spiral-ring" id="spiral-ring2" style="width:200px;height:200px;"></div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lb-img" src="" alt="">
+  <div class="lb-rarity" id="lb-rarity"></div>
+</div>
+
+<!-- ===== PACK OPENING OVERLAY ===== -->
+<div class="pack-opening-overlay" id="pack-overlay">
+  <div class="opening-pack" id="opening-pack" onclick="crackPack()">
+    <span class="pack-icon">🎴</span>
+    <div class="pack-shine" id="pack-shine"></div>
+    <div class="crack-line" style="top:20%;left:48%;width:3px;height:60%;transform:rotate(8deg);"></div>
+    <div class="crack-line" style="top:15%;left:52%;width:2.5px;height:50%;transform:rotate(-12deg);"></div>
+    <div class="crack-line" style="top:30%;left:44%;width:2px;height:35%;transform:rotate(25deg);"></div>
+    <div class="crack-line" style="top:25%;left:56%;width:2px;height:40%;transform:rotate(-20deg);"></div>
+    <div class="crack-line" style="top:35%;left:40%;width:1.5px;height:25%;transform:rotate(40deg);"></div>
+    <div class="crack-ray" style="top:35%;left:20%;width:60%;height:8px;transform:rotate(-5deg);"></div>
+    <div class="crack-ray" style="top:50%;left:10%;width:80%;height:6px;transform:rotate(3deg);"></div>
+    <div class="crack-ray" style="top:45%;left:15%;width:70%;height:10px;transform:rotate(-8deg);"></div>
+  </div>
+  <div class="opening-pack-hint" id="pack-hint">點擊開啟卡包</div>
+</div>
+
+<!-- ===== SCREEN: HOME ===== -->
+<div class="screen active" id="screen-home">
+  <div class="top-bar">
+    <h1 onclick="goHome()">Card Gacha</h1>
+    <button class="btn-nav" onclick="goCollection()">📦 我的收藏</button>
+  </div>
+  <div class="home-content">
+    <div class="home-title">Card Gacha</div>
+    <div class="home-subtitle">收集 200 張獨特卡牌</div>
+    <div class="pack-wrapper" onclick="startGacha()">
+      <div class="pack-box">
+        <span class="pack-icon">🎴</span>
+      </div>
+    </div>
+    <div class="pack-label">點擊卡包開始抽卡</div>
+    <button class="btn-primary" onclick="startGacha()">開啟卡包 ✨</button>
+  </div>
+</div>
+
+<!-- ===== SCREEN: GACHA ===== -->
+<div class="screen" id="screen-gacha">
+  <div class="top-bar">
+    <h1 onclick="goHome()">Card Gacha</h1>
+    <button class="btn-nav" onclick="goCollection()">📦 我的收藏</button>
+  </div>
+  <div class="gacha-content">
+    <div class="preview-strip" id="preview-strip"></div>
+    <div class="gacha-main">
+    <div class="gacha-progress" id="gacha-progress">第 1/5 張</div>
+    <div class="card-stage" id="card-stage">
+      <div class="card-aura" id="card-aura"></div>
+      <div class="card-inner" id="card-inner" onclick="flipCard()">
+        <div class="card-face card-back">
+          <span class="card-back-icon">🎴</span>
+          <span class="card-back-text">CARD GACHA</span>
+        </div>
+        <div class="card-face card-front" id="card-front">
+          <img id="card-img" src="" alt="">
+          <div class="rarity-badge" id="card-rarity-badge"></div>
+          <div class="rainbow-border" id="rainbow-border"></div>
+        </div>
+        <div class="sweep-light"></div>
+      </div>
+    </div>
+    <div class="gacha-hint" id="gacha-hint">點擊卡片翻開</div>
+    <button class="btn-next" id="btn-next" onclick="nextCard()" style="display:none">下一張</button>
+    </div><!-- close gacha-main -->
+  </div>
+</div>
+
+<!-- ===== SCREEN: RESULT ===== -->
+<div class="screen" id="screen-result">
+  <div class="top-bar">
+    <h1 onclick="goHome()">Card Gacha</h1>
+    <button class="btn-nav" onclick="goCollection()">📦 我的收藏</button>
+  </div>
+  <div class="result-content">
+    <div class="result-title">抽卡結果</div>
+    <div class="result-cards" id="result-cards"></div>
+    <div class="result-buttons">
+      <button class="btn-primary" onclick="startGacha()">再抽一包 ✨</button>
+      <button class="btn-secondary" onclick="goHome()">回首頁</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN: COLLECTION ===== -->
+<div class="screen" id="screen-collection">
+  <div class="top-bar">
+    <h1 onclick="goHome()">Card Gacha</h1>
+    <button class="btn-nav" onclick="goHome()">🏠 首頁</button>
+  </div>
+  <div class="collection-content" id="collection-content"></div>
+</div>
+
+<script>
+// ===== CARD DATA =====
+const ALL_CARDS = [
+  ...["0ck91","1rCS5","21ULX","2j0tE","2LA6Z","416CW","5hgLV","5PujU","5vy6a","6vAgO","7SXIG","7xpYI","8MnwI","9Yx0s","a1pWi","ajZHF","AlTtl","AV0JC","B1a08","bawKp","bYdOT","chDgU","CVWFj","cyAea","DcXE2","dkSbH","E0uX8","ebwPY","eCaBb","EiCBx","eJnHY","emOiw","f6Mfb","g4XCe","geIPt","gFQlk","Hbs2L","hjSQc","HLj6o","hmQlt","I3van","IakGE","IiFau","IOhoZ","iqKSQ","J6akO","JAuAS","JcT71","jrZFW","jTJLD","KaknR","KRAtH","ksNpj","Kv7d7","kXrPC","kZrph","LhW7p","lq6Xq","LQaQt","lYvJt","MhmV2","MuWWg","NFCAy","NpnUY","NTLCr","owYOX","pRdj0","PT327","qmKnx","QtrOt","r2AlJ","s29h5","s9mqa","Sfu1l","sGg7q","Sn7l3","SzTAE","TAt1u","tFLyg","TuOAI","TuX71","uBMNP","ugZS2","UhHpE","V5wGV","vGLqe","VGSRX","vYmEC","W37FD","wu2yv","X4GV3","x5NEU","X8ubQ","XnQL9","XOLn6","y2HCQ","yKa7u","Ylqwj","YqWCq","zbsUd"].map(id=>({id,folder:'cards/hell',series:'hell'})),
+  ...Array.from({length:50},(_,i)=>({id:`BB-${String(i+1).padStart(2,'0')}`,folder:'cards/badboss',series:'badboss'})),
+  ...Array.from({length:50},(_,i)=>({id:`SL-${String(i+1).padStart(2,'0')}`,folder:'cards/sweetpoison',series:'sweetpoison'})),
+];
+
+// ===== DETERMINISTIC RARITY ASSIGNMENT (seed=42) =====
+function seededRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 1664525 + 1013904223) & 0xFFFFFFFF;
+    return (s >>> 0) / 0xFFFFFFFF;
+  };
+}
+
+const RARITY_MAP = {};
+(function assignRarities() {
+  const rng = seededRandom(42);
+  const indices = ALL_CARDS.map((_, i) => i);
+  // Fisher-Yates shuffle with seed
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  // Assign: first 26 SSR(13%), next 46 SR(23%), next 48 R(24%), rest 80 N(40%)
+  indices.forEach((cardIdx, rank) => {
+    const card = ALL_CARDS[cardIdx];
+    const key = card.series + ':' + card.id;
+    if (rank < 26) RARITY_MAP[key] = 'SSR';
+    else if (rank < 72) RARITY_MAP[key] = 'SR';
+    else if (rank < 120) RARITY_MAP[key] = 'R';
+    else RARITY_MAP[key] = 'N';
+  });
+})();
+
+function getCardRarity(card) {
+  return RARITY_MAP[card.series + ':' + card.id] || 'N';
+}
+function getCardImage(card) {
+  return card.folder + '/' + card.id + '.png';
+}
+function getCardKey(card) {
+  return card.series + ':' + card.id;
+}
+
+// ===== COLLECTION =====
+function getCollection() {
+  try {
+    const data = JSON.parse(localStorage.getItem('cardGacha_collection'));
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
+}
+function saveCollection(arr) {
+  localStorage.setItem('cardGacha_collection', JSON.stringify(arr));
+}
+function addToCollection(cards) {
+  const coll = getCollection();
+  const set = new Set(coll);
+  cards.forEach(c => set.add(getCardKey(c)));
+  saveCollection([...set]);
+}
+
+// ===== SCREEN NAV =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function goHome() { showScreen('screen-home'); }
+function goCollection() { showScreen('screen-collection'); renderCollection(); }
+
+// ===== GACHA STATE =====
+let gachaCards = [];
+let gachaIndex = 0;
+let isFlipped = false;
+let isAnimating = false;
+
+function drawCards() {
+  const result = [];
+  for (let i = 0; i < 5; i++) {
+    const card = ALL_CARDS[Math.floor(Math.random() * ALL_CARDS.length)];
+    result.push(card);
+  }
+  return result;
+}
+
+// ===== START GACHA =====
+function startGacha() {
+  gachaCards = drawCards();
+  gachaIndex = 0;
+  isFlipped = false;
+  isAnimating = false;
+
+  // Build preview strip
+  const strip = document.getElementById('preview-strip');
+  strip.innerHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'preview-slot' + (i === 0 ? ' active-slot' : '');
+    slot.id = 'preview-slot-' + i;
+    slot.innerHTML = '<span style="color:#ccc;font-size:1.2rem;">?</span>';
+    strip.appendChild(slot);
+  }
+
+  showScreen('screen-gacha');
+  resetCardState();
+
+  // Show pack opening overlay
+  const overlay = document.getElementById('pack-overlay');
+  const pack = document.getElementById('opening-pack');
+  const hint = document.getElementById('pack-hint');
+  const shine = document.getElementById('pack-shine');
+
+  overlay.classList.add('active');
+  overlay.classList.remove('dimmed');
+  pack.className = 'opening-pack';
+  pack.style.cssText = '';
+  shine.style.opacity = '0';
+  hint.textContent = '點擊開啟卡包';
+  hint.style.opacity = '1';
+
+  // Drop in animation
+  pack.style.animation = 'packDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+  setTimeout(() => {
+    pack.style.animation = '';
+    pack.classList.add('idle');
+  }, 900);
+}
+
+let packPhase = 0;
+function crackPack() {
+  if (packPhase > 0) return;
+  packPhase = 1;
+
+  const pack = document.getElementById('opening-pack');
+  const hint = document.getElementById('pack-hint');
+  const overlay = document.getElementById('pack-overlay');
+  const shine = document.getElementById('pack-shine');
+  const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+
+  pack.classList.remove('idle');
+  hint.style.opacity = '0';
+
+  // === PHASE 1: Dim background + glow build-up (1.5s) ===
+  overlay.classList.add('dimmed');
+  pack.classList.add('phase-glow');
+  // Shine sweep across card
+  shine.style.transition = 'opacity 0.5s';
+  shine.style.opacity = '1';
+  shine.style.animation = 'shineSweep 1.5s ease-in-out';
+
+  // Small teaser particles during glow
+  const glowParticleTimer = setInterval(() => {
+    spawnBurstParticles(cx, cy, 8, ['#FFD700', '#fff', '#E8687D']);
+  }, 200);
+
+  // === PHASE 2: Crack + violent shake (1.2s) ===
+  setTimeout(() => {
+    clearInterval(glowParticleTimer);
+    pack.classList.remove('phase-glow');
+    pack.classList.add('phase-crack');
+
+    // Bright particles leaking from cracks
+    const crackLeakTimer = setInterval(() => {
+      spawnBurstParticles(cx, cy, 15, ['#FFD700', '#fff', '#FFA500', '#FFFACD']);
+    }, 100);
+
+    setTimeout(() => clearInterval(crackLeakTimer), 1200);
+  }, 1500);
+
+  // === PHASE 3: Final explosion (after crack+shake) ===
+  setTimeout(() => {
+    pack.classList.remove('phase-crack');
+    pack.classList.add('phase-explode');
+
+    // MASSIVE multi-wave explosion
+    // Wave 1: initial burst
+    spawnBurstParticles(cx, cy, 500, ['#FFD700', '#E8687D', '#9B7FD4', '#D4A36A', '#fff', '#FF6B9D', '#C084FC', '#FCD34D']);
+    // Wave 2: golden shower
+    setTimeout(() => spawnBurstParticles(cx, cy, 300, ['#FFD700', '#FFA500', '#FFFACD', '#fff']), 100);
+    // Wave 3: color explosion
+    setTimeout(() => spawnBurstParticles(cx, cy, 250, ['#E8687D', '#FF69B4', '#9B7FD4', '#4ECDC4']), 200);
+    // Wave 4: sparkle trail
+    setTimeout(() => spawnBurstParticles(cx, cy, 200, ['#fff', '#FFD700', '#FFA500']), 350);
+    // Wave 5: final shimmer
+    setTimeout(() => spawnBurstParticles(cx, cy, 150, ['#fff', '#FFFACD', '#FFD700', '#C084FC']), 500);
+
+    // Full screen flash
+    triggerFlash('SSR');
+
+    // Transition to cards
+    setTimeout(() => {
+      overlay.classList.remove('active', 'dimmed');
+      pack.className = 'opening-pack';
+      pack.style.cssText = '';
+      shine.style.cssText = '';
+      packPhase = 0;
+      setupCard(0);
+    }, 700);
+  }, 2800);
+}
+
+// ===== CARD SETUP =====
+function resetCardState() {
+  const inner = document.getElementById('card-inner');
+  inner.classList.add('no-transition');
+  inner.classList.remove('flipped', 'pre-flip', 'glow-N', 'glow-R', 'glow-SR', 'glow-SSR');
+  inner.style.animation = '';
+  document.getElementById('rainbow-border').classList.remove('active');
+  document.getElementById('card-aura').className = 'card-aura';
+  document.getElementById('btn-next').classList.remove('visible');
+  document.getElementById('gacha-hint').textContent = '點擊卡片翻開';
+  isFlipped = false;
+
+  // Force reflow
+  void inner.offsetHeight;
+  inner.classList.remove('no-transition');
+}
+
+function setupCard(index) {
+  gachaIndex = index;
+  const card = gachaCards[index];
+  const rarity = getCardRarity(card);
+
+  document.getElementById('gacha-progress').textContent = `第 ${index + 1}/5 張`;
+  document.getElementById('card-img').src = getCardImage(card);
+
+  const badge = document.getElementById('card-rarity-badge');
+  badge.textContent = rarity;
+  badge.className = 'rarity-badge rarity-' + rarity;
+
+  // Update preview active
+  document.querySelectorAll('.preview-slot').forEach((s, i) => {
+    s.classList.toggle('active-slot', i === index);
+  });
+
+  resetCardState();
+
+  // Slide-in animation
+  const stage = document.getElementById('card-stage');
+  stage.style.animation = 'cardSlideIn 0.4s ease-out';
+  setTimeout(() => stage.style.animation = '', 400);
+}
+
+// ===== FLIP CARD =====
+function flipCard() {
+  if (isAnimating) return;
+  if (isFlipped) { nextCard(); return; }
+  isAnimating = true;
+
+  const inner = document.getElementById('card-inner');
+  const stage = document.getElementById('card-stage');
+  const card = gachaCards[gachaIndex];
+  const rarity = getCardRarity(card);
+  const cx = stage.getBoundingClientRect().left + stage.getBoundingClientRect().width / 2;
+  const cy = stage.getBoundingClientRect().top + stage.getBoundingClientRect().height / 2;
+
+  document.getElementById('gacha-hint').textContent = '';
+
+  // === Phase 1: Pre-flip build-up (card lifts, glows, teaser particles) ===
+  inner.classList.add('pre-flip', 'glow-' + rarity);
+
+  // Teaser particles swirling around card during build-up
+  let teaserCount = rarity === 'SSR' ? 20 : rarity === 'SR' ? 12 : rarity === 'R' ? 6 : 3;
+  const teaserColors = rarity === 'SSR' ? ['#FFD700','#FF69B4','#4ECDC4','#C084FC']
+    : rarity === 'SR' ? ['#9B7FD4','#D4A36A','#FFD700']
+    : rarity === 'R' ? ['#4287f5','#6ba3ff','#fff']
+    : ['#ddd','#eee'];
+  const teaserTimer = setInterval(() => {
+    spawnBurstParticles(cx, cy, teaserCount, teaserColors);
+  }, 150);
+
+  // === Phase 2: The flip (after 600ms build-up) ===
+  setTimeout(() => {
+    clearInterval(teaserTimer);
+    inner.classList.remove('pre-flip');
+    inner.classList.add('flipped');
+
+    // Light sweep on flip
+    const sweep = document.querySelector('.sweep-light');
+    if (sweep) {
+      sweep.style.animation = 'none';
+      void sweep.offsetHeight;
+      sweep.style.animation = 'sweepAcross 0.6s ease-out forwards';
+    }
+
+    // === Phase 3: Rarity reveal effects (after flip halfway done) ===
+    setTimeout(() => {
+      triggerRarityEffect(rarity);
+
+      // Extra card-local particles based on rarity
+      if (rarity === 'R') {
+        spawnBurstParticles(cx, cy, 150, ['#4287f5','#6ba3ff','#a0c4ff','#fff']);
+        setTimeout(() => spawnBurstParticles(cx, cy, 80, ['#4287f5','#fff']), 200);
+      } else if (rarity === 'SR') {
+        spawnBurstParticles(cx, cy, 250, ['#9B7FD4','#D4A36A','#E8687D','#fff','#FFD700']);
+        setTimeout(() => spawnBurstParticles(cx, cy, 150, ['#FFD700','#9B7FD4','#fff']), 150);
+        setTimeout(() => spawnBurstParticles(cx, cy, 100, ['#D4A36A','#fff']), 300);
+      } else if (rarity === 'SSR') {
+        // Multi-wave spectacular
+        spawnBurstParticles(cx, cy, 400, ['#FFD700','#FF6B6B','#4ECDC4','#fff','#9B7FD4','#E8687D','#FF69B4']);
+        setTimeout(() => spawnBurstParticles(cx, cy, 250, ['#FFD700','#FFA500','#fff','#FFFACD']), 150);
+        setTimeout(() => spawnBurstParticles(cx, cy, 200, ['#FF69B4','#C084FC','#4ECDC4']), 300);
+        setTimeout(() => spawnBurstParticles(cx, cy, 150, ['#FFD700','#fff']), 500);
+        setTimeout(() => spawnBurstParticles(cx, cy, 100, ['#fff','#FFFACD','#FFD700']), 700);
+      } else {
+        spawnBurstParticles(cx, cy, 40, ['#ddd','#eee','#fff']);
+      }
+
+      isFlipped = true;
+      isAnimating = false;
+
+      if (gachaIndex < 4) {
+        document.getElementById('gacha-hint').textContent = '點擊卡片 → 下一張';
+      } else {
+        document.getElementById('gacha-hint').textContent = '點擊卡片 → 查看結果';
+      }
+    }, 500);
+  }, 600);
+}
+
+function triggerRarityEffect(rarity) {
+  const beam = document.getElementById('light-beam');
+  const ring = document.getElementById('spiral-ring');
+  const ring2 = document.getElementById('spiral-ring2');
+  const flash = document.getElementById('fullscreen-flash');
+  const aura = document.getElementById('card-aura');
+  const inner = document.getElementById('card-inner');
+  const rainbow = document.getElementById('rainbow-border');
+
+  // Reset
+  beam.className = 'light-beam';
+  ring.className = 'spiral-ring';
+  ring2.className = 'spiral-ring';
+  flash.className = 'fullscreen-flash';
+  rainbow.classList.remove('active');
+  aura.className = 'card-aura';
+  inner.style.animation = '';
+
+  void beam.offsetHeight;
+
+  const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+
+  switch (rarity) {
+    case 'N':
+      flash.classList.add('active-N');
+      aura.classList.add('aura-N');
+      spawnBurstParticles(cx, cy, 60, ['#ddd', '#eee', '#fff', '#c0c0c0']);
+      break;
+
+    case 'R':
+      beam.classList.add('active-R');
+      flash.classList.add('active-R');
+      aura.classList.add('aura-R');
+      spawnBurstParticles(cx, cy, 200, ['#4287f5', '#6ba3ff', '#a0c4ff', '#fff', '#7BB3FF']);
+      setTimeout(() => spawnBurstParticles(cx, cy, 100, ['#4287f5', '#a0c4ff', '#fff']), 200);
+      setTimeout(() => spawnBurstParticles(cx, cy, 80, ['#6ba3ff', '#fff']), 400);
+      break;
+
+    case 'SR':
+      beam.classList.add('active-SR');
+      flash.classList.add('active-SR');
+      ring.classList.add('active-SR');
+      ring2.classList.add('active-SR');
+      aura.classList.add('aura-SR');
+      inner.style.animation = 'shakeCard 0.5s ease-out';
+      spawnBurstParticles(cx, cy, 350, ['#9B7FD4', '#D4A36A', '#E8687D', '#fff', '#FFD700', '#C084FC']);
+      setTimeout(() => spawnBurstParticles(cx, cy, 200, ['#FFD700', '#9B7FD4', '#fff']), 150);
+      setTimeout(() => spawnBurstParticles(cx, cy, 150, ['#D4A36A', '#FFD700', '#fff']), 300);
+      setTimeout(() => spawnBurstParticles(cx, cy, 100, ['#C084FC', '#fff']), 500);
+      setTimeout(() => inner.style.animation = '', 500);
+      break;
+
+    case 'SSR':
+      flash.classList.add('active-SSR');
+      beam.classList.add('active-SSR');
+      ring.classList.add('active-SSR');
+      ring2.classList.add('active-SSR');
+      rainbow.classList.add('active');
+      aura.classList.add('aura-SSR');
+      inner.style.animation = 'shakeCard 0.6s ease-out';
+      spawnBurstParticles(cx, cy, 500, ['#FFD700', '#FF6B6B', '#4ECDC4', '#fff', '#9B7FD4', '#E8687D', '#ff8800', '#FF69B4']);
+      setTimeout(() => spawnBurstParticles(cx, cy, 300, ['#FFD700', '#FFA500', '#fff', '#FCD34D']), 200);
+      setTimeout(() => spawnBurstParticles(cx, cy, 250, ['#FF6B6B', '#FF69B4', '#9B7FD4', '#4ECDC4']), 400);
+      setTimeout(() => spawnBurstParticles(cx, cy, 200, ['#FFD700', '#fff', '#FFA500']), 600);
+      setTimeout(() => spawnBurstParticles(cx, cy, 150, ['#fff', '#FFD700', '#FF69B4']), 800);
+      setTimeout(() => inner.style.animation = '', 600);
+      break;
+  }
+}
+
+// ===== NEXT CARD =====
+function nextCard() {
+  if (!isFlipped || isAnimating) return;
+
+  if (gachaIndex >= 4) {
+    // Show result
+    showResult();
+    return;
+  }
+
+  isAnimating = true;
+
+  // Fly card thumbnail to preview slot
+  const card = gachaCards[gachaIndex];
+  const rarity = getCardRarity(card);
+  const slot = document.getElementById('preview-slot-' + gachaIndex);
+
+  // Fill the preview slot
+  slot.classList.add('filled');
+  slot.innerHTML = `<img src="${getCardImage(card)}" alt="">
+    <span class="rarity-dot rarity-${rarity}">${rarity[0]}</span>`;
+
+  // Hide next button
+  document.getElementById('btn-next').classList.remove('visible');
+
+  // Animate card shrinking away
+  const stage = document.getElementById('card-stage');
+  const inner = document.getElementById('card-inner');
+  inner.style.transition = 'transform 0.4s ease-in, opacity 0.4s ease-in';
+  inner.style.transform = 'rotateY(180deg) scale(0.2)';
+  inner.style.opacity = '0';
+
+  // Clear rainbow
+  document.getElementById('rainbow-border').classList.remove('active');
+
+  setTimeout(() => {
+    inner.style.transition = '';
+    inner.style.transform = '';
+    inner.style.opacity = '';
+    setupCard(gachaIndex + 1);
+    isAnimating = false;
+  }, 450);
+}
+
+// ===== RESULT =====
+function showResult() {
+  addToCollection(gachaCards);
+
+  const container = document.getElementById('result-cards');
+  container.innerHTML = '';
+  gachaCards.forEach(card => {
+    const rarity = getCardRarity(card);
+    const div = document.createElement('div');
+    div.className = 'result-card';
+    div.innerHTML = `<img src="${getCardImage(card)}" alt="">
+      <div class="result-rarity rarity-${rarity}">${rarity}</div>`;
+    div.onclick = () => openLightbox(getCardImage(card), rarity);
+    container.appendChild(div);
+  });
+
+  showScreen('screen-result');
+}
+
+// ===== LIGHTBOX =====
+function openLightbox(src, rarity) {
+  document.getElementById('lb-img').src = src;
+  const rb = document.getElementById('lb-rarity');
+  rb.textContent = rarity;
+  rb.className = 'lb-rarity rarity-' + rarity;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+// ===== COLLECTION PAGE =====
+const SERIES_INFO = {
+  hell: { name: '🔥 地獄卡牌', emoji: '🔥' },
+  badboss: { name: '🗣️ 灌老闆話錄', emoji: '🗣️' },
+  sweetpoison: { name: '💋 毒舌蜜糖', emoji: '💋' },
+};
+
+function renderCollection() {
+  const coll = new Set(getCollection());
+  const content = document.getElementById('collection-content');
+  const total = ALL_CARDS.length;
+  const owned = ALL_CARDS.filter(c => coll.has(getCardKey(c))).length;
+
+  let html = `
+    <div class="coll-progress">
+      <div class="coll-progress-text">收集進度：${owned} / ${total}</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${(owned/total*100).toFixed(1)}%"></div></div>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="filterCollection('all',this)">全部</button>
+      <button class="filter-btn" data-filter="hell" onclick="filterCollection('hell',this)">🔥 地獄卡牌</button>
+      <button class="filter-btn" data-filter="badboss" onclick="filterCollection('badboss',this)">🗣️ 灌老闆話錄</button>
+      <button class="filter-btn" data-filter="sweetpoison" onclick="filterCollection('sweetpoison',this)">💋 毒舌蜜糖</button>
+      <button class="filter-btn" data-filter="N" onclick="filterCollection('N',this)">N</button>
+      <button class="filter-btn" data-filter="R" onclick="filterCollection('R',this)">R</button>
+      <button class="filter-btn" data-filter="SR" onclick="filterCollection('SR',this)">SR</button>
+      <button class="filter-btn" data-filter="SSR" onclick="filterCollection('SSR',this)">SSR</button>
+    </div>
+    <div id="coll-sections"></div>
+  `;
+  content.innerHTML = html;
+  filterCollection('all', content.querySelector('.filter-btn.active'));
+}
+
+function filterCollection(filter, btn) {
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const coll = new Set(getCollection());
+  const sections = document.getElementById('coll-sections');
+  let html = '';
+
+  const seriesOrder = ['hell', 'badboss', 'sweetpoison'];
+  const rarityFilters = ['N', 'R', 'SR', 'SSR'];
+  const isRarityFilter = rarityFilters.includes(filter);
+
+  seriesOrder.forEach(series => {
+    if (filter !== 'all' && !isRarityFilter && filter !== series) return;
+
+    const cards = ALL_CARDS.filter(c => c.series === series);
+    const filtered = isRarityFilter
+      ? cards.filter(c => getCardRarity(c) === filter)
+      : cards;
+
+    if (filtered.length === 0) return;
+
+    html += `<div class="coll-section-title">${SERIES_INFO[series].name} (${filtered.filter(c=>coll.has(getCardKey(c))).length}/${filtered.length})</div>`;
+    html += '<div class="coll-grid">';
+    filtered.forEach(card => {
+      const key = getCardKey(card);
+      const rarity = getCardRarity(card);
+      if (coll.has(key)) {
+        html += `<div class="coll-card" onclick="openLightbox('${getCardImage(card)}','${rarity}')">
+          <img src="${getCardImage(card)}" alt="" loading="lazy">
+          <span class="coll-rarity-badge rarity-${rarity}">${rarity}</span>
+        </div>`;
+      } else {
+        html += `<div class="coll-card locked">?</div>`;
+      }
+    });
+    html += '</div>';
+  });
+
+  sections.innerHTML = html;
+}
+
+// ===== PARTICLE SYSTEM =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function spawnBurstParticles(cx, cy, count, colors) {
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
+    const speed = 2 + Math.random() * 6;
+    const size = 2 + Math.random() * 5;
+    const life = 40 + Math.random() * 40;
+    particles.push({
+      x: cx, y: cy,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 1,
+      size,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life,
+      maxLife: life,
+      gravity: 0.05 + Math.random() * 0.05,
+      shape: Math.random() > 0.5 ? 'circle' : 'star',
+    });
+  }
+}
+
+function drawStar(ctx, cx, cy, r) {
+  ctx.beginPath();
+  for (let i = 0; i < 5; i++) {
+    const angle = (Math.PI * 2 * i) / 5 - Math.PI / 2;
+    const outerX = cx + Math.cos(angle) * r;
+    const outerY = cy + Math.sin(angle) * r;
+    if (i === 0) ctx.moveTo(outerX, outerY);
+    else ctx.lineTo(outerX, outerY);
+    const innerAngle = angle + Math.PI / 5;
+    ctx.lineTo(cx + Math.cos(innerAngle) * r * 0.4, cy + Math.sin(innerAngle) * r * 0.4);
+  }
+  ctx.closePath();
+  ctx.fill();
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles = particles.filter(p => p.life > 0);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += p.gravity;
+    p.life--;
+
+    const alpha = p.life / p.maxLife;
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = p.color;
+
+    if (p.shape === 'star') {
+      drawStar(ctx, p.x, p.y, p.size);
+    } else {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * alpha, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+function triggerFlash(type) {
+  const flash = document.getElementById('fullscreen-flash');
+  flash.className = 'fullscreen-flash';
+  void flash.offsetHeight;
+  flash.classList.add('active-' + type);
+}
+</script>
+</body>
+</html>
