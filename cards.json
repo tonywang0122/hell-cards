@@ -3,601 +3,601 @@
   "cards": [
     {
       "id": "0ck91",
-      "image": "0ck91.png",
+      "image": "gacha/cards/hell/0ck91.png",
       "name": "C-10 我相信你的專業的PM",
       "storyText": "PM 說：「我相信你的專業，你自己決定。」你決定了。PM 看了一下：「嗯……我覺得可以再想想。」你改了。PM 又看了一下：「還是你之前那個比較好。」所以你的專業就是繞一圈回到原點。"
     },
     {
       "id": "1rCS5",
-      "image": "1rCS5.png",
+      "image": "gacha/cards/hell/1rCS5.png",
       "name": "A-17",
       "storyText": "CEO 看了一篇 Medium 文章，隔天 All Hands 宣布：「我們要 Pivot！」全公司三個月的 roadmap 作廢。你問新方向是什麼，他說：「就是那篇文章的方向。」你去看了那篇文章，3 分鐘就讀完。"
     },
     {
       "id": "21ULX",
-      "image": "21ULX.png",
+      "image": "gacha/cards/hell/21ULX.png",
       "name": "C-05 需求又改了的PM",
       "storyText": "PM 在開發到 70% 的時候說：「需求改了。」你問為什麼？「Stakeholder 的 stakeholder 有新想法。」你問那之前做的呢？「嗯……算是 learning。」你學到的是：不要太早開始做。"
     },
     {
       "id": "2LA6Z",
-      "image": "2LA6Z.png",
+      "image": "gacha/cards/hell/2LA6Z.png",
       "name": "B-18 數據導向的行銷",
       "storyText": "行銷說團隊要「數據導向」。你給了數據，建議停掉成效最差的 campaign。行銷主管說：「但那個是老闆喜歡的。」你問那數據的作用是什麼？「證明老闆的決定是對的。」"
     },
     {
       "id": "2j0tE",
-      "image": "2j0tE.png",
+      "image": "gacha/cards/hell/2j0tE.png",
       "name": "B-48 我們鼓勵內部轉職的人資",
       "storyText": "人資說公司鼓勵內部轉職。你申請了。你的主管知道了。他在 1:1 說：「你是不是對團隊不滿意？」你說不是，只是想嘗試新方向。他說：「喔好，那你手上這些先收尾。」收尾花了半年。"
     },
     {
       "id": "416CW",
-      "image": "416CW.png",
+      "image": "gacha/cards/hell/416CW.png",
       "name": "A-09",
       "storyText": "專案成功，主管在高層面前說：「這是團隊的功勞。」但簡報上只有他的名字。你的名字在第 47 頁附錄裡，字體大小 8pt。"
     },
     {
       "id": "5PujU",
-      "image": "5PujU.png",
+      "image": "gacha/cards/hell/5PujU.png",
       "name": "C-28 參考Apple的感覺的PM",
       "storyText": "PM 拿了一張 Apple 官網截圖說：「就做成這種感覺。」你說 Apple 有一整個設計團隊和品牌系統。PM 說：「我知道，但感覺應該不難吧？就白白的、很乾淨。」你做了一版白白乾淨的。PM 說：「怎麼感覺有點空。」"
     },
     {
       "id": "5hgLV",
-      "image": "5hgLV.png",
+      "image": "gacha/cards/hell/5hgLV.png",
       "name": "B-07 Logo要大一點的行銷主管",
       "storyText": "設計交了海報稿。行銷主管說：「Logo 要大一點。」大了。「再大一點。」又大了。最後 Logo 佔了畫面 60%，主管說：「嗯，但好像少了什麼設計感。」"
     },
     {
       "id": "5vy6a",
-      "image": "5vy6a.png",
+      "image": "gacha/cards/hell/5vy6a.png",
       "name": "C-24 Scope Creep的PM",
       "storyText": "每次 sprint review，stakeholder 都會「順便」提新需求。PM 每次都說：「好，我先記下來。」但記下來就等於答應了。你的 sprint backlog 從 8 個 story 長到 23 個。PM 說：「velocity 需要提升。」"
     },
     {
       "id": "6vAgO",
-      "image": "6vAgO.png",
+      "image": "gacha/cards/hell/6vAgO.png",
       "name": "B-16 我跟客戶說兩週的業務",
       "storyText": "業務簽完合約才來問工程要多久。工程說六週。業務說：「我跟客戶說兩週了。」你問為什麼不先確認，他說：「客戶等不了六週啊。」所以變成你等不了下班。"
     },
     {
       "id": "7SXIG",
-      "image": "7SXIG.png",
+      "image": "gacha/cards/hell/7SXIG.png",
       "name": "B-41 幫我想個slogan的行銷",
       "storyText": "行銷叫你幫忙想slogan。你想了五個。行銷說都不行。你問他要什麼感覺？「就像Apple那種。」你說Apple花了幾百萬美金在品牌上。行銷說：「對，但我們預算是零。」"
     },
     {
       "id": "7xpYI",
-      "image": "7xpYI.png",
+      "image": "gacha/cards/hell/7xpYI.png",
       "name": "C-12 先上線再說的PM",
       "storyText": "PM 說：「先上線再說，邊跑邊修。」你說還有三個 known issue。PM 說：「先上線，使用者不一定會碰到。」上線第一天，使用者全碰到了。PM 說：「誰能預料到呢。」你說你，你預料到了。"
     },
     {
       "id": "8MnwI",
-      "image": "8MnwI.png",
+      "image": "gacha/cards/hell/8MnwI.png",
       "name": "C-06 這不是我想要的的所有人",
       "storyText": "設計師做了三版 mockup。PM 說不是他想要的。老闆說不是他想要的。業務說客戶不是想要這個。你問到底誰想要什麼？三個人給了三個完全不同的答案，而且都說「我一開始就說了」。"
     },
     {
       "id": "9Yx0s",
-      "image": "9Yx0s.png",
+      "image": "gacha/cards/hell/9Yx0s.png",
       "name": "C-11 環境壞了的早晨",
       "storyText": "早上九點開電腦，dev 環境跑不起來。你查了一個小時，發現是昨晚有人 push 了一個 breaking change 然後下班了。那個人今天請假。Slack上他的狀態：🌴 On Vacation。"
     },
     {
       "id": "AV0JC",
-      "image": "AV0JC.png",
+      "image": "gacha/cards/hell/AV0JC.png",
       "name": "A-03 我們是一家人的老闆",
       "storyText": "老闆在尾牙上說：「我們是一家人。」隔天裁掉三個「家人」。被裁的人連資遣費都要自己去問HR怎麼算。老闆的IG當天更新了他在峇里島的照片。"
     },
     {
       "id": "AlTtl",
-      "image": "AlTtl.png",
+      "image": "gacha/cards/hell/AlTtl.png",
       "name": "C-16 這是MVP的PM",
       "storyText": "PM 說這次只做 MVP。你看了 spec，上面有 42 個 user story。你問這是 MVP？PM 說：「對，我已經砍掉很多了。」你問原本幾個？「87 個。」他砍掉了一半，你的工作量依然是正常的兩倍。"
     },
     {
       "id": "B1a08",
-      "image": "B1a08.png",
+      "image": "gacha/cards/hell/B1a08.png",
       "name": "C-27 我在local跑是好的的工程師",
       "storyText": "Bug 回報。你說：「我在 local 跑是好的。」QA 說：「但 staging 壞了。」你查了一下，是環境變數不同。你修了。QA 說：「production 也壞了。」你查了一下，是另一個環境變數不同。三個環境，三種人生。"
     },
     {
       "id": "CVWFj",
-      "image": "CVWFj.png",
+      "image": "gacha/cards/hell/CVWFj.png",
       "name": "A-08",
       "storyText": "老闆說：「開個短會，十分鐘就好。」一個半小時後，你的午餐在桌上涼了。會議結論：「下次再約一個會討論。」"
     },
     {
       "id": "DcXE2",
-      "image": "DcXE2.png",
+      "image": "gacha/cards/hell/DcXE2.png",
       "name": "B-14 會議室被借走了的行政",
       "storyText": "你兩週前預約了會議室。到了當天，門上貼著「已被高層徵用」。你問行政，行政說：「高層的需求優先。」你帶著六個人和投影機去茶水間開會。"
     },
     {
       "id": "E0uX8",
-      "image": "E0uX8.png",
+      "image": "gacha/cards/hell/E0uX8.png",
       "name": "B-26 我幫你escalate的業務主管",
       "storyText": "業務主管說：「你的問題我幫你 escalate。」兩週後你去追進度。他說：「我有提，但上面說目前不是優先。」你問他怎麼提的。他說：「就……順便提了一下。」"
     },
     {
       "id": "EiCBx",
-      "image": "EiCBx.png",
+      "image": "gacha/cards/hell/EiCBx.png",
       "name": "A-18",
       "storyText": "老闆說：「我以前也是這樣過來的，年輕人要能吃苦。」你查了一下，他以前的房價是現在的五分之一，而且他28歲就升主管。時代變了，但話術沒有。"
     },
     {
       "id": "HLj6o",
-      "image": "HLj6o.png",
+      "image": "gacha/cards/hell/HLj6o.png",
       "name": "C-04 技術債以後再處理的文化",
       "storyText": "每次 sprint planning 你提技術債，PM 都說：「先做新功能，技術債以後再處理。」三年了。以後從來沒有來。系統像一棟不斷加蓋的違建，每次改東西都有別的地方會塌。"
     },
     {
       "id": "Hbs2L",
-      "image": "Hbs2L.png",
+      "image": "gacha/cards/hell/Hbs2L.png",
       "name": "C-29 GitHub被刪了的實習生",
       "storyText": "實習生跑來跟你說：「學長，我好像不小心把 main branch force push 了。」你看了一下 GitHub。歷史紀錄只剩他昨天寫的 TODO 註解。你深呼吸。你跟他說沒關係。但你的血壓已經到了一個境界。"
     },
     {
       "id": "I3van",
-      "image": "I3van.png",
+      "image": "gacha/cards/hell/I3van.png",
       "name": "B-44 公告的行政",
       "storyText": "行政在群組發公告：「明天停車場施工，請改停B2。」你隔天停B2，發現B2也在施工。你問行政，行政說：「喔對，B2也是，忘了更新。」你最後停在三條街外。"
     },
     {
       "id": "IOhoZ",
-      "image": "IOhoZ.png",
+      "image": "gacha/cards/hell/IOhoZ.png",
       "name": "A-14",
       "storyText": "你問為什麼要這樣做。老闆說：「這是公司文化。」你再問這文化的邏輯是什麼。老闆說：「你來多久了？」原來年資可以取代邏輯。"
     },
     {
       "id": "IakGE",
-      "image": "IakGE.png",
+      "image": "gacha/cards/hell/IakGE.png",
       "name": "C-07 小小的改動的PM",
       "storyText": "PM 說：「只是小小的改動。」你評估了一下：要改 database schema、重新跑 migration、更新三個 API、改前端兩個 component。你說這不小。PM 說：「但 UI 上只是多一個欄位啊。」"
     },
     {
       "id": "IiFau",
-      "image": "IiFau.png",
+      "image": "gacha/cards/hell/IiFau.png",
       "name": "C-14 素材自己找的設計師",
       "storyText": "主管說要做一份精美的簡報。你問素材呢？「你自己找。」你問照片呢？「網路上找。」你問預算買圖庫嗎？「先用免費的。」最後你的「精美簡報」裡全是 Unsplash 圖片和 Canva 模板。"
     },
     {
       "id": "J6akO",
-      "image": "J6akO.png",
+      "image": "gacha/cards/hell/J6akO.png",
       "name": "C-01 幫我看一下的同事",
       "storyText": "同事說：「幫我看一下這段 code。」你看了一下，它沒有測試、沒有註解、變數名叫 a, b, c, temp2。你看了第二下，它 work 了但你不知道為什麼。第三下，你的眼睛開始痛。"
     },
     {
       "id": "JAuAS",
-      "image": "JAuAS.png",
+      "image": "gacha/cards/hell/JAuAS.png",
       "name": "B-03 幫我報個價的業務",
       "storyText": "業務傳LINE：「幫我報個價，很簡單的東西。」你打開需求，是客製化系統整合加 API 串接。你報了合理的價。業務說：「可以再低一點嗎？我跟客戶說很便宜。」"
     },
     {
       "id": "JcT71",
-      "image": "JcT71.png",
+      "image": "gacha/cards/hell/JcT71.png",
       "name": "B-49 系統升級的行政",
       "storyText": "行政通知：「本週末系統升級，週一恢復正常。」週一你打開電腦，登不進去。你問IT，IT說：「帳號被重置了。」你問行政，行政說：「升級都這樣。」你花了半天重新設定所有東西。"
     },
     {
       "id": "KRAtH",
-      "image": "KRAtH.png",
+      "image": "gacha/cards/hell/KRAtH.png",
       "name": "B-20 績效面談的人資",
       "storyText": "績效面談。主管說你表現很好，符合預期。你問那考績呢？「符合預期就是 B。」你問怎樣才能 A？「就是……超出預期。」你問預期在哪？「你應該自己知道。」"
     },
     {
       "id": "KaknR",
-      "image": "KaknR.png",
+      "image": "gacha/cards/hell/KaknR.png",
       "name": "C-08 我只是提個建議的PM",
       "storyText": "PM 在 code review 留言：「我只是提個建議，要不要用另一種架構？」你解釋為什麼不適合。PM 說：「好，那你決定。」隔天 retro，PM 說：「當初我有建議用另一個架構，但工程師堅持己見。」"
     },
     {
       "id": "Kv7d7",
-      "image": "Kv7d7.png",
+      "image": "gacha/cards/hell/Kv7d7.png",
       "name": "C-15 你幫我部署一下的同事",
       "storyText": "同事說：「你幫我部署一下，我有事先走。」你問部署什麼？「就那個 branch。」你問哪個 branch？「最新的那個。」你查了一下，最新的 branch 五天前就沒更新了。而且它跟 main 已經 conflict 了。"
     },
     {
       "id": "LQaQt",
-      "image": "LQaQt.png",
+      "image": "gacha/cards/hell/LQaQt.png",
       "name": "A-20",
       "storyText": "主管說：「這件事你處理，CC 我就好。」你 CC 了他。出事的時候他說：「我只是被 CC，我沒有 approve。」你翻了一下信件，他確實只有被 CC。完美的免責設計。"
     },
     {
       "id": "LhW7p",
-      "image": "LhW7p.png",
+      "image": "gacha/cards/hell/LhW7p.png",
       "name": "B-38 空調壞了的行政",
       "storyText": "辦公室空調壞了，溫度 32 度。你跟行政反映。行政說：「已經報修了。」你問修好了沒，行政給你一台小電風扇。你把電風扇對著螢幕吹，因為筆電也過熱了。"
     },
     {
       "id": "MhmV2",
-      "image": "MhmV2.png",
+      "image": "gacha/cards/hell/MhmV2.png",
       "name": "B-01",
       "storyText": "業務跑來跟你說：「客戶說可以，你做就對了。」你問有沒有書面確認，他說「我們用 LINE 講的。」你問能不能截圖，他說「那個對話我刪了。」"
     },
     {
       "id": "MuWWg",
-      "image": "MuWWg.png",
+      "image": "gacha/cards/hell/MuWWg.png",
       "name": "B-40 ROI在哪裡的財務",
       "storyText": "你提了一個改善內部流程的案子。財務問：「ROI 在哪裡？」你說能省下每人每天 30 分鐘。財務說：「30 分鐘不是錢。」你說那加班費呢？財務說：「加班費已經在預算裡了。」原來加班是被規劃好的。"
     },
     {
       "id": "NFCAy",
-      "image": "NFCAy.png",
+      "image": "gacha/cards/hell/NFCAy.png",
       "name": "B-25 調薪會議的人資",
       "storyText": "人資通知年度調薪結果：3%。你算了一下，稅後扣完勞健保，實際多拿 NT$800。你去超商買了一杯咖啡慶祝。然後發現咖啡也漲價了。"
     },
     {
       "id": "NTLCr",
-      "image": "NTLCr.png",
+      "image": "gacha/cards/hell/NTLCr.png",
       "name": "C-21 來sync一下的PM",
       "storyText": "PM 說：「來 sync 一下，五分鐘。」你進了會議。PM 打開了一份 38 頁的簡報。你知道你的下午沒了。"
     },
     {
       "id": "NpnUY",
-      "image": "NpnUY.png",
+      "image": "gacha/cards/hell/NpnUY.png",
       "name": "B-04 這是加值服務的業務",
       "storyText": "業務簽了一個案子，合約裡多了五項「加值服務」。你問這些東西有報價嗎？業務說：「這是送的，建立關係。」你才知道，被送的是你的工時。"
     },
     {
       "id": "PT327",
-      "image": "PT327.png",
+      "image": "gacha/cards/hell/PT327.png",
       "name": "B-35 有多元包容的文化的人資",
       "storyText": "人資在對外招募頁寫著「我們擁抱多元與包容」。你看了一下管理層，清一色是同一個學校畢業的中年男性。多元的部分在哪裡？在實習生裡。"
     },
     {
       "id": "QtrOt",
-      "image": "QtrOt.png",
+      "image": "gacha/cards/hell/QtrOt.png",
       "name": "B-22 這個不能報的財務",
       "storyText": "你買了工作用的轉接頭，NT$350。財務說不能報，因為「沒有事前申請」。你問事前申請流程，財務給了你一份七頁的 SOP。為了 350 元你要填七頁表格。"
     },
     {
       "id": "Sfu1l",
-      "image": "Sfu1l.png",
+      "image": "gacha/cards/hell/Sfu1l.png",
       "name": "B-32 這個要年輕化的行銷主管",
       "storyText": "行銷主管說品牌要「年輕化」。你問怎麼年輕化？「就用IG啊。」你開了IG帳號。主管說：「那Threads呢？TikTok呢？小紅書呢？」你一個人經營四個平台。"
     },
     {
       "id": "Sn7l3",
-      "image": "Sn7l3.png",
+      "image": "gacha/cards/hell/Sn7l3.png",
       "name": "B-28 要有成本意識的財務長",
       "storyText": "財務長在月會上說：「大家要有成本意識。」然後你發現高層的出差都是商務艙，但基層出差連行李費都要事前申請。成本意識是有方向性的。"
     },
     {
       "id": "SzTAE",
-      "image": "SzTAE.png",
+      "image": "gacha/cards/hell/SzTAE.png",
       "name": "A-11",
       "storyText": "老闆從歐洲出差回來說：「你們太安逸了，要有狼性。」他的行李箱上還掛著免稅店的袋子。你上個月加班 60 小時。"
     },
     {
       "id": "TAt1u",
-      "image": "TAt1u.png",
+      "image": "gacha/cards/hell/TAt1u.png",
       "name": "B-43 合約我簽了的業務",
       "storyText": "業務拿著已簽名的合約走過來：「合約簽了，下週要上線。」你翻開合約看到一條寫著：「包含 7×24 技術支援。」你問誰答應的？業務說：「寫在附件裡而已啦。」你的人生從此沒有週末。"
     },
     {
       "id": "TuOAI",
-      "image": "TuOAI.png",
+      "image": "gacha/cards/hell/TuOAI.png",
       "name": "B-11 團建活動的人資",
       "storyText": "人資說週六有團建活動。你問可以不去嗎？人資說：「自由參加。」你的主管說：「你是不是不去？」你去了。活動是在大太陽下玩大地遊戲，你 36 歲。"
     },
     {
       "id": "TuX71",
-      "image": "TuX71.png",
+      "image": "gacha/cards/hell/TuX71.png",
       "name": "A-10",
       "storyText": "週一早上老闆說：「我昨晚想了一下，方向全部改掉。」你已經做了兩週。你看了一眼旁邊的 PM，PM 的眼神已經死了。"
     },
     {
       "id": "UhHpE",
-      "image": "UhHpE.png",
+      "image": "gacha/cards/hell/UhHpE.png",
       "name": "B-17 素材明天要的行銷",
       "storyText": "行銷下午五點傳訊息：「明天要上一個 campaign，素材今晚能給嗎？」你問 brief 呢？「就……有質感的感覺。」你問尺寸？「先給我正方形的，其他的之後再調。」之後 = 明天早上。"
     },
     {
       "id": "V5wGV",
-      "image": "V5wGV.png",
+      "image": "gacha/cards/hell/V5wGV.png",
       "name": "B-24 參考一下競品的行銷",
       "storyText": "行銷說：「參考一下競品怎麼做的。」你研究了三個競品回來報告。行銷說：「嗯，但我們不能跟他們一樣。」你問那要怎樣？「就……不一樣但又要那種感覺。」"
     },
     {
       "id": "VGSRX",
-      "image": "VGSRX.png",
+      "image": "gacha/cards/hell/VGSRX.png",
       "name": "B-02 客戶很急的業務",
       "storyText": "業務說：「客戶很急，今天能交嗎？」你趕出來了。三天後客戶說：「喔我下禮拜再看。」你看向業務，業務說：「至少我們提前準備好了嘛。」"
     },
     {
       "id": "W37FD",
-      "image": "W37FD.png",
+      "image": "gacha/cards/hell/W37FD.png",
       "name": "A-13",
       "storyText": "老闆說公司要「扁平化管理」。意思是：沒有中間主管幫你擋刀，所有鍋直接從天上掉到你頭上。你現在直接向三個高層報告，每個人要的東西互相矛盾。"
     },
     {
       "id": "X4GV3",
-      "image": "X4GV3.png",
+      "image": "gacha/cards/hell/X4GV3.png",
       "name": "C-09 不是bug是feature的工程師",
       "storyText": "QA 回報了一個 bug。你看了一下 code，發現這段邏輯是你三年前寫的。當時你覺得很聰明。現在你覺得是誰寫的這個。git blame 顯示你的名字。你決定叫它 feature。"
     },
     {
       "id": "X8ubQ",
-      "image": "X8ubQ.png",
+      "image": "gacha/cards/hell/X8ubQ.png",
       "name": "B-15 請填這張表的行政",
       "storyText": "你要申請一個東西。行政給了你一張表。你填了。行政說還要填另一張。你也填了。行政說：「最後還有一張。」你填了。三張表的內容 87% 重複。"
     },
     {
       "id": "XOLn6",
-      "image": "XOLn6.png",
+      "image": "gacha/cards/hell/XOLn6.png",
       "name": "B-27 文案要改一下tone的行銷",
       "storyText": "你寫了文案。行銷說：「tone 不對，要再活潑一點。」你改了。「太活潑了，要專業。」你改了。「現在太冷了，要有溫度。」你改了。第八版，行銷說：「還是第一版好。」"
     },
     {
       "id": "XnQL9",
-      "image": "XnQL9.png",
+      "image": "gacha/cards/hell/XnQL9.png",
       "name": "C-17 可以順便改一下嗎的PM",
       "storyText": "PM 在你修 bug 的 ticket 下面留言：「既然都開了，可以順便改一下那個介面嗎？」你說這是不同的 scope。PM 說：「但都在同一頁上面啊。」對他來說「同一頁」是一個理由，對你來說「同一頁」是三天工作量。"
     },
     {
       "id": "Ylqwj",
-      "image": "Ylqwj.png",
+      "image": "gacha/cards/hell/Ylqwj.png",
       "name": "A-07",
       "storyText": "老闆問你：「你覺得呢？」你說了你覺得的。老闆說：「嗯，但我覺得不是這樣。」你才明白這個問句不是問句。"
     },
     {
       "id": "YqWCq",
-      "image": "YqWCq.png",
+      "image": "gacha/cards/hell/YqWCq.png",
       "name": "B-46 年度預算凍結的財務",
       "storyText": "財務宣布年度預算凍結。你要買的工具不能買了。但你注意到公司裝了一台新的膠囊咖啡機。你問這不是預算凍結嗎？行政說：「這是去年的預算。」時間管理大師。"
     },
     {
       "id": "a1pWi",
-      "image": "a1pWi.png",
+      "image": "gacha/cards/hell/a1pWi.png",
       "name": "C-23 上線前一天的寧靜",
       "storyText": "上線前一天，一切出奇地順利。沒有 bug、沒有人改需求、部署順暢。你不安。因為你知道這種寧靜不正常。果然，上線後第一個小時就爆了。寧靜只是暴風雨前的假象。"
     },
     {
       "id": "ajZHF",
-      "image": "ajZHF.png",
+      "image": "gacha/cards/hell/ajZHF.png",
       "name": "C-18 這是誰approve的的主管",
       "storyText": "Code review 過了、PM 簽了、QA 也測了。上線出包。主管問：「這是誰 approve 的？」所有人看向你，因為你是按下 merge 的那個人。approve chain 上每個人都在，但只有按按鈕的人會被記住。"
     },
     {
       "id": "bYdOT",
-      "image": "bYdOT.png",
+      "image": "gacha/cards/hell/bYdOT.png",
       "name": "A-02 週五下班前給我的老闆",
       "storyText": "週五下午四點半，老闆傳LINE：「這份報告週五下班前給我。」你看了一下，是一份需要跨三個部門數據的年度分析。你回：「今天就是週五。」已讀不回。"
     },
     {
       "id": "bawKp",
-      "image": "bawKp.png",
+      "image": "gacha/cards/hell/bawKp.png",
       "name": "A-01 這個不難啦的老闆",
       "storyText": "老闆走進會議室，看了一眼設計稿：「這個不難啦，改一下就好。」你問改哪裡，他說「就……整體感覺。」你追問什麼感覺，他說「你專業的你決定。」然後你改了三版他都不滿意。"
     },
     {
       "id": "chDgU",
-      "image": "chDgU.png",
+      "image": "gacha/cards/hell/chDgU.png",
       "name": "B-36 幫我P一下的行銷",
       "storyText": "行銷拿了一張模糊的手機照片來：「幫我P一下，要放官網。」你說解析度不夠。他說：「你不是會修圖嗎？」你修了。他看完說：「怎麼感覺假假的。」因為原圖就是假的。"
     },
     {
       "id": "cyAea",
-      "image": "cyAea.png",
+      "image": "gacha/cards/hell/cyAea.png",
       "name": "B-34 幫我做個demo的業務",
       "storyText": "業務說：「下午要見客戶，幫我做個 demo。」你問什麼產品？「就我們的平台啊。」你問要demo哪個功能？「全部。」你問有幾分鐘？「五分鐘。」全部功能，五分鐘。"
     },
     {
       "id": "dkSbH",
-      "image": "dkSbH.png",
+      "image": "gacha/cards/hell/dkSbH.png",
       "name": "C-26 我幫你爭取了的PM",
       "storyText": "PM 說：「我幫你爭取到多一週的時間了！」你感激地算了一下，原來是把四週的工作量排進三週，PM 幫你多爭取到一週。總共四週。做四週的事。你該感謝什麼？"
     },
     {
       "id": "eCaBb",
-      "image": "eCaBb.png",
+      "image": "gacha/cards/hell/eCaBb.png",
       "name": "C-03 這個需求很明確的PM",
       "storyText": "PM 說需求很明確。你打開 spec，第三行寫著「使用者體驗要流暢」。你問什麼叫流暢？PM 說：「就不要卡卡的。」你問多不卡才算不卡？PM 說：「你是工程師你應該知道。」"
     },
     {
       "id": "eJnHY",
-      "image": "eJnHY.png",
+      "image": "gacha/cards/hell/eJnHY.png",
       "name": "B-39 試用期延長的人資",
       "storyText": "三個月試用期到了。人資通知你：「試用期延長兩個月，主管覺得還需要觀察。」你問觀察什麼？「綜合表現。」你問綜合是指什麼？「就……綜合。」你繼續上班，但心已經在更新履歷了。"
     },
     {
       "id": "ebwPY",
-      "image": "ebwPY.png",
+      "image": "gacha/cards/hell/ebwPY.png",
       "name": "B-23 系統不能這樣用的行政",
       "storyText": "你想用公司系統做一件很合理的事。行政說：「系統不能這樣用。」你問為什麼不能？「因為系統沒有這個功能。」你問能不能加？「要跟廠商申請，流程大約三個月。」你最後用 Excel 解決了。"
     },
     {
       "id": "emOiw",
-      "image": "emOiw.png",
+      "image": "gacha/cards/hell/emOiw.png",
       "name": "C-20 文件之後再補的工程師",
       "storyText": "你接手一個專案，問前任工程師要文件。他說：「我打算之後再補。」他兩年前就離職了。文件活在他的腦裡，他的腦活在另一間公司裡。你花了三天才搞懂這個系統在幹嘛。"
     },
     {
       "id": "f6Mfb",
-      "image": "f6Mfb.png",
+      "image": "gacha/cards/hell/f6Mfb.png",
       "name": "B-50 先建立信任的業務",
       "storyText": "客戶遲遲不簽約。業務說：「不急，先建立信任。」信任建立了三個月，包括六次免費提案、四次現場展示、兩次改規格。最後客戶說：「我們決定用另一家。」業務說：「沒關係，我們交了個朋友。」"
     },
     {
       "id": "g4XCe",
-      "image": "g4XCe.png",
+      "image": "gacha/cards/hell/g4XCe.png",
       "name": "B-21 客戶改需求了的業務",
       "storyText": "開發到一半，業務說：「客戶改需求了。」你問簽約的規格不是定了？業務說：「客戶是我們的衣食父母。」你低頭看了一下自己的衣服，已經三天沒換了。"
     },
     {
       "id": "gFQlk",
-      "image": "gFQlk.png",
+      "image": "gacha/cards/hell/gFQlk.png",
       "name": "C-22 這個先workaround的日常",
       "storyText": "每次碰到問題，答案都是「先 workaround」。一年後你發現整個系統是由 workaround 疊起來的。workaround 的 workaround 的 workaround。你已經不知道哪一層是正解了。"
     },
     {
       "id": "geIPt",
-      "image": "geIPt.png",
+      "image": "gacha/cards/hell/geIPt.png",
       "name": "B-30 印表機壞了的行政",
       "storyText": "你趕著印合約，印表機壞了。你找行政。行政說：「已經報修了。」你問什麼時候好？「廠商說下週。」你問有沒有備用的？「有，在17樓，但那台也壞了。」"
     },
     {
       "id": "hjSQc",
-      "image": "hjSQc.png",
+      "image": "gacha/cards/hell/hjSQc.png",
       "name": "B-31 專案結案了的業務",
       "storyText": "業務說專案結案了，開心慶功。但你知道那只是合約結案。接下來有六個月的維護期、三次免費修改、無限次「小調整」。結案是業務的結案，不是你的。"
     },
     {
       "id": "hmQlt",
-      "image": "hmQlt.png",
+      "image": "gacha/cards/hell/hmQlt.png",
       "name": "B-09 你的離職原因是的人資",
       "storyText": "離職面談，人資問：「請問離職原因是？」你說：「管理問題。」人資在表上寫：「個人生涯規劃。」你說：「不是，是管理——」人資微笑：「我們都寫生涯規劃。」"
     },
     {
       "id": "iqKSQ",
-      "image": "iqKSQ.png",
+      "image": "gacha/cards/hell/iqKSQ.png",
       "name": "C-25 你的設計太設計了的主管",
       "storyText": "你花了一週做了一版精緻的 UI。主管看了一下說：「你的設計太設計了。」你問什麼意思？「就……太精美了，我們的使用者沒那麼在意。」你下一版故意做醜了。主管說：「這版好，很接地氣。」"
     },
     {
       "id": "jTJLD",
-      "image": "jTJLD.png",
+      "image": "gacha/cards/hell/jTJLD.png",
       "name": "B-29 員工滿意度調查的人資",
       "storyText": "人資發了匿名員工滿意度調查。你填了真心話。下週主管找你聊：「你最近好像對公司有些想法？」你問他怎麼知道。他說：「HR 跟我說有人填了一些建議。」匿名的定義，跟你想的不一樣。"
     },
     {
       "id": "jrZFW",
-      "image": "jrZFW.png",
+      "image": "gacha/cards/hell/jrZFW.png",
       "name": "B-06 先發再說的行銷",
       "storyText": "行銷趕著發社群貼文，文案還沒校對就上了。錯字被網友截圖。主管問誰審核的，行銷說：「時間來不及。」你看了一下時間，這篇文排了兩週。"
     },
     {
       "id": "kXrPC",
-      "image": "kXrPC.png",
+      "image": "gacha/cards/hell/kXrPC.png",
       "name": "B-33 這季cost down的財務",
       "storyText": "財務宣布這季要 cost down 10%。你部門的影印紙、白板筆、衛生紙開始管控。同一週你看到公司花了五十萬辦高層策略營。在五星級飯店。有自助餐。"
     },
     {
       "id": "kZrph",
-      "image": "kZrph.png",
+      "image": "gacha/cards/hell/kZrph.png",
       "name": "B-12 這個要重新報的財務",
       "storyText": "你出差回來報帳，財務說：「格式不對，重新報。」你改了。「這個品項不能報。」你刪了。「收據要正本。」你翻了一小時找出來。最後核銷金額：NT$87。"
     },
     {
       "id": "ksNpj",
-      "image": "ksNpj.png",
+      "image": "gacha/cards/hell/ksNpj.png",
       "name": "C-30 最後一天的工程師",
       "storyText": "離職最後一天。你交接了文件、刪了 local 環境、還了門禁卡。走出公司的時候，手機震了一下。是前同事傳的：「那個專案有個問題想問你……」你笑了。把手機收進口袋。夕陽很好。"
     },
     {
       "id": "lYvJt",
-      "image": "lYvJt.png",
+      "image": "gacha/cards/hell/lYvJt.png",
       "name": "B-37 飯局的業務前輩",
       "storyText": "業務前輩說：「晚上有個飯局，你來。」你以為是客戶。到了現場是業務前輩的朋友聚餐，你負責倒酒跟笑。十二點回到家你媽問你吃了沒。你其實沒吃到什麼。"
     },
     {
       "id": "lq6Xq",
-      "image": "lq6Xq.png",
+      "image": "gacha/cards/hell/lq6Xq.png",
       "name": "C-02 production掛了的深夜",
       "storyText": "凌晨兩點手機響了。「Production 掛了。」你爬起來打開電腦。Root cause 是三個月前另一個人改的一行 code。那個人已經離職了。你修好了，沒有人會記得。"
     },
     {
       "id": "owYOX",
-      "image": "owYOX.png",
+      "image": "gacha/cards/hell/owYOX.png",
       "name": "A-15",
       "storyText": "主管下午五點半指派任務說：「我沒有要你加班的意思，但明天早上要。」你看了一下工作量，默默把外套掛回去。隔天主管說：「你昨天留很晚喔？要注意 work-life balance。」"
     },
     {
       "id": "pRdj0",
-      "image": "pRdj0.png",
+      "image": "gacha/cards/hell/pRdj0.png",
       "name": "B-05 這個要病毒式傳播的行銷",
       "storyText": "行銷主管說：「這個 campaign 要病毒式傳播。」你問預算多少，他說：「零，我們靠內容取勝。」你問要什麼內容，他說：「就……會爆紅的那種。」"
     },
     {
       "id": "qmKnx",
-      "image": "qmKnx.png",
+      "image": "gacha/cards/hell/qmKnx.png",
       "name": "B-42 職涯發展計畫的人資",
       "storyText": "人資要你填「職涯發展計畫」，規劃未來三年目標。你認真填了。三年後你發現這份文件從來沒被看過。你的「發展」是自己換了三間公司。"
     },
     {
       "id": "r2AlJ",
-      "image": "r2AlJ.png",
+      "image": "gacha/cards/hell/r2AlJ.png",
       "name": "B-47 我們要做品牌的行銷長",
       "storyText": "行銷長說：「我們不只是賣東西，我們要做品牌。」你問品牌策略是什麼？他拿出一張 mood board，上面全是其他品牌的截圖。你問自己的品牌定位呢？「就像這些，但是是我們的。」"
     },
     {
       "id": "s29h5",
-      "image": "s29h5.png",
+      "image": "gacha/cards/hell/s29h5.png",
       "name": "B-13 月底才能請款的財務",
       "storyText": "你一號交請款單。財務說月底處理。月底到了，財務說：「你的資料有個欄位空白，退回。」你補了。下個月一號又交。又等一個月。你開始懷疑這是不是一個時間迴圈。"
     },
     {
       "id": "s9mqa",
-      "image": "s9mqa.png",
+      "image": "gacha/cards/hell/s9mqa.png",
       "name": "B-19 關係我來技術你來的業務",
       "storyText": "業務帶你去見客戶。全程業務聊高爾夫和小孩學校。技術問題全轉給你。回來路上業務說：「你講得太技術了，客戶聽不懂。」你心想，那是因為你一句都沒幫忙翻譯。"
     },
     {
       "id": "sGg7q",
-      "image": "sGg7q.png",
+      "image": "gacha/cards/hell/sGg7q.png",
       "name": "C-19 設計要跟上開發進度的PM",
       "storyText": "Sprint 已經開始了。PM 說：「這個 sprint 的設計稿麻煩週三前給。」你說通常設計要跑在開發前兩週。PM 說：「但我們是 agile。」你才知道 agile 的意思是你比較快。"
     },
     {
       "id": "tFLyg",
-      "image": "tFLyg.png",
+      "image": "gacha/cards/hell/tFLyg.png",
       "name": "A-05 先做預算後面再談的老闆",
       "storyText": "老闆說：「這案子很重要，先做，預算後面再談。」你做了。預算沒有後面。只有你的加班沒有加班費。"
     },
     {
       "id": "uBMNP",
-      "image": "uBMNP.png",
+      "image": "gacha/cards/hell/uBMNP.png",
       "name": "A-04 要有創業家精神的CEO",
       "storyText": "CEO在All Hands說：「每個人都要有創業家精神！」你心想，創業家有股份。你沒有。你有的是每天晚上九點的Slack通知。"
     },
     {
       "id": "ugZS2",
-      "image": "ugZS2.png",
+      "image": "gacha/cards/hell/ugZS2.png",
       "name": "C-13 Stand-up 15分鐘的日常",
       "storyText": "Daily stand-up 說好 15 分鐘。PM 開始討論 spec。設計師開始 show mockup。主管開始回顧上週目標。45 分鐘後你還站著。你的咖啡已經涼了。你的腳也麻了。"
     },
     {
       "id": "vGLqe",
-      "image": "vGLqe.png",
+      "image": "gacha/cards/hell/vGLqe.png",
       "name": "B-08 公司非常重視員工福利的人資",
       "storyText": "人資在新人訓練上說：「公司非常重視員工福利。」福利包括：每月一次的部門聚餐（自費AA）、生日假（要提前兩週申請）、免費咖啡（三合一即溶）。"
     },
     {
       "id": "vYmEC",
-      "image": "vYmEC.png",
+      "image": "gacha/cards/hell/vYmEC.png",
       "name": "B-10 薪資是保密的的人資",
       "storyText": "人資說：「薪資是保密的，不可以跟同事討論。」但你已經知道，跟你做一樣事的新人薪水比你高 8K。你是從新人本人那裡知道的，因為他不知道要保密。"
     },
     {
       "id": "wu2yv",
-      "image": "wu2yv.png",
+      "image": "gacha/cards/hell/wu2yv.png",
       "name": "A-16",
       "storyText": "老闆說：「有問題隨時找我，我的門永遠開著。」你去找他，他在開會。你傳訊息，已讀不回。你寄信，他叫你約他助理。助理說下週才有空。"
     },
     {
       "id": "x5NEU",
-      "image": "x5NEU.png",
+      "image": "gacha/cards/hell/x5NEU.png",
       "name": "B-45 能不能加個功能的業務",
       "storyText": "業務每次見完客戶都會說：「客戶問能不能加個功能。」你問是什麼功能？「就……一個很小的按鈕。」那個按鈕背後是三週的開發量。業務說：「不是就一個按鈕嗎？」"
     },
     {
       "id": "y2HCQ",
-      "image": "y2HCQ.png",
+      "image": "gacha/cards/hell/y2HCQ.png",
       "name": "A-06",
       "storyText": "出事的時候副總說：「這件事我不知道。」但當初是他在會議上說「就這樣做」的。你翻出會議記錄，他說：「那時候的 context 不一樣。」"
     },
     {
       "id": "yKa7u",
-      "image": "yKa7u.png",
+      "image": "gacha/cards/hell/yKa7u.png",
       "name": "A-12",
       "storyText": "CEO 說要「先對齊一下」。你以為是十分鐘的事。結果是五個部門、三場會議、兩份簡報，最後對齊的結論是「我們需要再對齊一次」。"
     },
     {
       "id": "zbsUd",
-      "image": "zbsUd.png",
+      "image": "gacha/cards/hell/zbsUd.png",
       "name": "A-19",
       "storyText": "老闆拍你肩膀說：「公司沒有你不行。」你有點感動。然後你發現這句話他對每個人都說過。而且上個月離職的那個「不行」的人，公司活得好好的。"
     }

@@ -3,301 +3,301 @@
   "cards": [
     {
       "id": "BB-01",
-      "image": "BB-01.png",
+      "image": "gacha/cards/badboss/BB-01.png",
       "name": "BB-01 「明年一定調薪」",
       "storyText": "2022 尾牙：「明年一定調薪！」2023：「明年一定！」2024：「明年一定！」你查字典，「明年」的同義詞是「永遠不會」。第四年你在新公司尾牙，薪水多 35%。"
     },
     {
       "id": "BB-02",
-      "image": "BB-02.png",
+      "image": "gacha/cards/badboss/BB-02.png",
       "name": "BB-02 「等上市你們都是千萬富翁」",
       "storyText": "老闆每月都在畫上市藍圖，你用這張藍圖撐過三年月薪 32K。第五年公司收了，你收到非自願離職證明。老闆？在杜拜打卡。"
     },
     {
       "id": "BB-03",
-      "image": "BB-03.png",
+      "image": "gacha/cards/badboss/BB-03.png",
       "name": "BB-03 「我們福利業界頂尖」",
       "storyText": "頂尖福利：茶水間濾水器（水龍頭）、中秋禮盒是老闆娘直銷試用包、尾牙特獎跟老闆合照（裱框另計）。同學年終六個月，你年終是一封 email 感謝信。"
     },
     {
       "id": "BB-04",
-      "image": "BB-04.png",
+      "image": "gacha/cards/badboss/BB-04.png",
       "name": "BB-04 「你是我接班人的首選」",
       "storyText": "老闆喝了三杯威士忌勾肩搭背：「你是接班人首選。」你感動了整個週末。週一公司來了新副總——老闆兒子，28 歲，剛從澳洲打工度假回來，專長衝浪。他第一個決策是把咖啡機換成果汁機。"
     },
     {
       "id": "BB-05",
-      "image": "BB-05.png",
+      "image": "gacha/cards/badboss/BB-05.png",
       "name": "BB-05 「五年後你會感謝現在的自己」",
       "storyText": "你月薪 28K，每天加班到十點，週末 on call。老闆拍你肩膀：「五年後你會感謝現在的自己。」五年後你在另一家當主管，唯一感謝的是——當年終於遞了辭呈的那個自己。"
     },
     {
       "id": "BB-06",
-      "image": "BB-06.png",
+      "image": "gacha/cards/badboss/BB-06.png",
       "name": "BB-06 「我們不是在賣產品，是在改變世界」",
       "storyText": "老闆慷慨激昂：「我們在改變世界！」公司做的是印章、獎盃和招牌。你確實改變了——2,000 家公司門口的壓克力字體，從新細明體改成微軟正黑體。你是改變世界的男人。"
     },
     {
       "id": "BB-07",
-      "image": "BB-07.png",
+      "image": "gacha/cards/badboss/BB-07.png",
       "name": "BB-07 「年底紅包不會讓你們失望」",
       "storyText": "你扛了最大的案子，加了 200 小時的班。年底紅包信封好厚。打開——$600。你數了三次確認不是六千。旁邊工讀生也拿 $600。你問：「全公司一樣嗎？」老闆笑：「我們講究公平。」"
     },
     {
       "id": "BB-08",
-      "image": "BB-08.png",
+      "image": "gacha/cards/badboss/BB-08.png",
       "name": "BB-08 「這是花錢都買不到的經驗」",
       "storyText": "老闆把失控專案丟給你。沒預算、沒人力、客戶精神不穩定、deadline 是昨天。老闆：「花錢都買不到的經驗！」你想問：「可以折現嗎？這個月房租還沒繳。」花錢買不到是真的——沒人願意花錢買。"
     },
     {
       "id": "BB-09",
-      "image": "BB-09.png",
+      "image": "gacha/cards/badboss/BB-09.png",
       "name": "BB-09 「等規模做大，股份少不了你」",
       "storyText": "你為這句話拼了三年。公司從 5 人長到 50 人，營收翻八倍。你問股份。老闆沉默五秒：「現在談太早，公司還在成長期。」你看了看門口他老婆剛停進來的新 Tesla Model X。某些人的成長期已經結束了。"
     },
     {
       "id": "BB-10",
-      "image": "BB-10.png",
+      "image": "gacha/cards/badboss/BB-10.png",
       "name": "BB-10 「薪水是一時的，能力是一輩子的」",
       "storyText": "老闆開 Porsche Cayenne，戴 Rolex，穿 Zegna，坐 Herman Miller 對你說：「薪水一時的，能力一輩子。」你穿 UNIQLO 特價 T，坐椅背壞的椅子，吃 7-11 打折麵包。你的能力確實一輩子——一輩子幫他賺錢。"
     },
     {
       "id": "BB-11",
-      "image": "BB-11.png",
+      "image": "gacha/cards/badboss/BB-11.png",
       "name": "BB-11 「我沒有要你加班，是你自己效率不好」",
       "storyText": "你背四個專案、兩人工作量、每天十五個會議。加班到十一點。老闆月會上：「我從來不要求加班，是有些人效率不好。」全公司看著你。你的效率沒問題，問題是投胎到這間公司。"
     },
     {
       "id": "BB-12",
-      "image": "BB-12.png",
+      "image": "gacha/cards/badboss/BB-12.png",
       "name": "BB-12 「一個人扛不代表有問題，代表你很強」",
       "storyText": "部門五人走了三個。你問補人嗎？老闆拍肩：「你一個人扛得住代表你很強！」三個月後你也走了。老闆對最後一人說同一句話。那人正在更新 LinkedIn。"
     },
     {
       "id": "BB-13",
-      "image": "BB-13.png",
+      "image": "gacha/cards/badboss/BB-13.png",
       "name": "BB-13 「我週末也在想公司的事，你呢？」",
       "storyText": "週一晨會老闆：「我週末都在想公司，凌晨三點還發 email。」你週末在看牙醫——上班咬牙切齒咬出顳顎關節障礙。你週末想的唯一公事是「週一又要上班了」。"
     },
     {
       "id": "BB-14",
-      "image": "BB-14.png",
+      "image": "gacha/cards/badboss/BB-14.png",
       "name": "BB-14 「你不能只看薪水，要看整體」",
       "storyText": "你拿到競業 offer 跟老闆談。老闆：「看整體。」你看了：沒補助、沒分紅、三節是老闆娘團購鳳梨酥、勞健保高薪低報、加班費用補休代替但永遠請不到。你看完整體比只看薪水更想走。"
     },
     {
       "id": "BB-15",
-      "image": "BB-15.png",
+      "image": "gacha/cards/badboss/BB-15.png",
       "name": "BB-15 「手機開著就好，不是要你隨時工作」",
       "storyText": "週六早上七點 LINE：「方便講電話嗎？」沒接。八分鐘後：「？」十二分鐘後：「你在幹嘛？」十五分鐘後打你家市話。你媽接的。你媽現在也覺得你老闆有問題。"
     },
     {
       "id": "BB-16",
-      "image": "BB-16.png",
+      "image": "gacha/cards/badboss/BB-16.png",
       "name": "BB-16 「快速 sync 一下，五分鐘就好」",
       "storyText": "11:55 老闆說 sync 五分鐘。你沒帶水。四小時後你快渴死了。會議內容：老闆講四十分鐘兒子申請學校的事、一小時討論衛生紙品牌、兩小時畫沒人懂的策略藍圖。唯一 action item 是「回去想想」。"
     },
     {
       "id": "BB-17",
-      "image": "BB-17.png",
+      "image": "gacha/cards/badboss/BB-17.png",
       "name": "BB-17 「可以請假，但你要確保不影響進度」",
       "storyText": "你請三天假。出發前加班三天把未來工作做完、旅行中每晚回飯店開電腦、回來後加班三天補新需求。你請了三天假，為此多工作了九天。"
     },
     {
       "id": "BB-18",
-      "image": "BB-18.png",
+      "image": "gacha/cards/badboss/BB-18.png",
       "name": "BB-18 「做得快代表還有餘力，再給你一個」",
       "storyText": "你提前完成了。老闆路過：「做完啦？那這個也幫忙。」做完又來了。又來了。你終於理解——在這間公司，效率不是解藥，效率是毒藥。從此你學會一件事做三天。"
     },
     {
       "id": "BB-19",
-      "image": "BB-19.png",
+      "image": "gacha/cards/badboss/BB-19.png",
       "name": "BB-19 「我們是責任制，不用打卡」",
       "storyText": "面試說責任制不打卡很自由。入職後：九點前必須到（不叫打卡叫簽到），遲到五分鐘老闆「關心」你。下班？責任沒完成哪來的下班。你要走時老闆看你一眼，那一眼讓你又坐了兩小時。"
     },
     {
       "id": "BB-20",
-      "image": "BB-20.png",
+      "image": "gacha/cards/badboss/BB-20.png",
       "name": "BB-20 「景氣這麼差，有工作就要偷笑了」",
       "storyText": "你提加薪。老闆掏手機給你看新聞：「裁員潮！有工作就偷笑。」你低頭看新聞下方廣告——徵才網站。你在廁所偷投了三家。一個月後在新公司偷笑了，薪水多 45%。"
     },
     {
       "id": "BB-21",
-      "image": "BB-21.png",
+      "image": "gacha/cards/badboss/BB-21.png",
       "name": "BB-21 「我什麼時候說過？你拿證據出來」",
       "storyText": "你拿出 email。老闆：「你理解錯了。」拿出 LINE 截圖。老闆：「場合不同。」拿出錄音。老闆：「上班偷錄音？有沒有職業道德？」保護自己叫沒有職業道德，老闆說謊叫情境不同。"
     },
     {
       "id": "BB-22",
-      "image": "BB-22.png",
+      "image": "gacha/cards/badboss/BB-22.png",
       "name": "BB-22 「這是團隊成果」／「你來解釋」",
       "storyText": "成功了。老闆在客戶前：「我帶領團隊的成果。」客戶誇你。老闆：「他是我一手帶出來的。」爆了。老闆會議上看你：「你來解釋。」功勞會蒸發，鍋會凝固。"
     },
     {
       "id": "BB-23",
-      "image": "BB-23.png",
+      "image": "gacha/cards/badboss/BB-23.png",
       "name": "BB-23 「我的意思不是這個意思」",
       "storyText": "老闆說：「做一頁簡單的。」你做了。「怎麼這麼陽春？」你加料。「太花了。」你精簡。「跟第一版有什麼差別？」答案在老闆自己都不知道的腦區。"
     },
     {
       "id": "BB-24",
-      "image": "BB-24.png",
+      "image": "gacha/cards/badboss/BB-24.png",
       "name": "BB-24 「大家都同意了吧？就這樣」",
       "storyText": "老闆提了所有人都覺得有問題的方案。停頓 0.3 秒：「大家同意了吧？好，就這樣。」沒人來得及開口。三週後炸了。老闆翻會議記錄：「全員同意的。」0.3 秒的沉默被記為共識。"
     },
     {
       "id": "BB-25",
-      "image": "BB-25.png",
+      "image": "gacha/cards/badboss/BB-25.png",
       "name": "BB-25 「方向調整一下，之前的先不要了」",
       "storyText": "你花三週做的方案。老闆看五秒：「方向調整，之前不要了。」這是今年第七次。你的 2026 年有 21 週花在被取消的案子上。你開始覺得工作本質是「生產垃圾」。"
     },
     {
       "id": "BB-26",
-      "image": "BB-26.png",
+      "image": "gacha/cards/badboss/BB-26.png",
       "name": "BB-26 「你怎麼沒有往上 escalate？」",
       "storyText": "你用 email、LINE、Slack、週會、一對一、電梯、他去抽菸的時候追出去說了。東西爆了。老闆：「你怎麼沒 escalate？」你已經 escalate 到無處可 escalate——因為他就是最上面。"
     },
     {
       "id": "BB-27",
-      "image": "BB-27.png",
+      "image": "gacha/cards/badboss/BB-27.png",
       "name": "BB-27 「照流程走啊，你們不會自己看嗎？」",
       "storyText": "你去找流程文件。沒有。問 HR，HR 說問主管，主管說問老闆。老闆：「照流程走啊。」你：「文件在哪？」老闆：「你們不會自己建嗎？」你要照不存在的流程走，然後自己建出來。"
     },
     {
       "id": "BB-28",
-      "image": "BB-28.png",
+      "image": "gacha/cards/badboss/BB-28.png",
       "name": "BB-28 「他是自己要走的，跟公司無關」",
       "storyText": "一年走了八人。每次老闆都說跟公司無關。八人離職面談原因全寫同一個名字。HR 也在更新履歷。年底聚餐圓桌坐不滿。老闆舉杯：「留下來的是真夥伴。」桌上只有你跟他。"
     },
     {
       "id": "BB-29",
-      "image": "BB-29.png",
+      "image": "gacha/cards/badboss/BB-29.png",
       "name": "BB-29 「你 review 一下就好，應該很快」",
       "storyText": "老闆花三萬找外包做網站。成品：四個按鈕三個壞的、手機版全跑掉、圖片是浮水印版。老闆：「你 review 一下。」你 review 完發現比重做還慢。預算花完了，你免費重做。簡報還寫外包名字。"
     },
     {
       "id": "BB-30",
-      "image": "BB-30.png",
+      "image": "gacha/cards/badboss/BB-30.png",
       "name": "BB-30 「我當初就覺得怪怪的」",
       "storyText": "你問老闆 A 還是 B。他選 A。照 A 做了，爆了。老闆檢討會上：「我當初就覺得怪怪的，就跟你說應該選 B。」在這間公司，老闆的記憶是量子態的——他永遠同時選了 A 和 B，取決於哪個成功。"
     },
     {
       "id": "BB-31",
-      "image": "BB-31.png",
+      "image": "gacha/cards/badboss/BB-31.png",
       "name": "BB-31 「你看小陳，人家都沒有抱怨」",
       "storyText": "你反映工作量太大。老闆：「你看小陳，什麼都不說。」你去看了——小陳桌上放著抗焦慮藥、手腕戴護腕、電腦旁貼「撐到年底就辭」。小陳不是沒抱怨，小陳是已經放棄了。"
     },
     {
       "id": "BB-32",
-      "image": "BB-32.png",
+      "image": "gacha/cards/badboss/BB-32.png",
       "name": "BB-32 「我罵你是看得起你」",
       "storyText": "老闆全公司面前罵你到狗血淋頭。散會後拉你：「我罵你是看得起你。不然你看小林，我連罵都懶。」你看了小林——小林是全公司最快樂的人。你突然很羨慕那種不被看得起的快樂。"
     },
     {
       "id": "BB-33",
-      "image": "BB-33.png",
+      "image": "gacha/cards/badboss/BB-33.png",
       "name": "BB-33 「你覺得你值多少？說個數字」",
       "storyText": "你鼓起勇氣說了數字。老闆「呵」了一聲，那一聲呵把你三十年自信壓縮成一顆芝麻。你走出辦公室覺得自己連現在薪水都不值。直到拿到外面 offer，你才知道那聲「呵」是精心計算的心理操控。"
     },
     {
       "id": "BB-34",
-      "image": "BB-34.png",
+      "image": "gacha/cards/badboss/BB-34.png",
       "name": "BB-34 「你該不會在外面面試吧？」",
       "storyText": "你請半天假看醫生回來。老闆盯你：「去面試了吧？」你：「看醫生。」老闆：「穿這麼好看去看醫生？」你只是穿了一件沒有洞的 T-shirt。從此請假那天要故意穿很破爛，否則就是叛徒。"
     },
     {
       "id": "BB-35",
-      "image": "BB-35.png",
+      "image": "gacha/cards/badboss/BB-35.png",
       "name": "BB-35 「你以為外面就比較好？天真」",
       "storyText": "你提離職。老闆拉你談兩小時。核心：「外面都一樣爛。」「你的能力在市場也就這樣。」你差點被說服留下。直到跟已離開的前同事吃飯——他快樂到你認不出來。"
     },
     {
       "id": "BB-36",
-      "image": "BB-36.png",
+      "image": "gacha/cards/badboss/BB-36.png",
       "name": "BB-36 「你太玻璃心了」",
       "storyText": "老闆在客戶面前當面否定你：「這水準這麼差。」你表達不舒服。老闆翻白眼：「太玻璃心了。」同一個老闆上週因為 email 的「敬上」漏打了，在辦公室摔滑鼠。你的玻璃心：被公開羞辱。他的不是玻璃心：摔公司財產。"
     },
     {
       "id": "BB-37",
-      "image": "BB-37.png",
+      "image": "gacha/cards/badboss/BB-37.png",
       "name": "BB-37 「你最近是不是跟 XXX 走很近？」",
       "storyText": "你跟同事午餐三天。老闆：「跟小王走很近？小心。」你跟小李喝咖啡。老闆：「小李不要太相信。」你跟小張走出公司。老闆：「小張啊……算了。」最後全公司不能交朋友。老闆是太陽，所有行星只能繞他轉。"
     },
     {
       "id": "BB-38",
-      "image": "BB-38.png",
+      "image": "gacha/cards/badboss/BB-38.png",
       "name": "BB-38 「我對你這麼好，你要走？」",
       "storyText": "你提離職。老闆：「我對你這麼好你要走？」他的好：讓你扛三人的活、逢年過節多發一條 LINE 貼圖、有次你加班到凌晨兩點他叫了一份麥當勞——59 元麥克雞塊。你走那天他完全沒送你。"
     },
     {
       "id": "BB-39",
-      "image": "BB-39.png",
+      "image": "gacha/cards/badboss/BB-39.png",
       "name": "BB-39 「年輕人就是吃不了苦」",
       "storyText": "你每天十二小時連續三個月沒休。你說想休一天。老闆搖頭：「現在年輕人吃不了苦。」老闆自己每天下午三點「拜訪客戶」、週三打高爾夫、上月去了兩趟日本。他口中的苦大概長得像日本和牛。"
     },
     {
       "id": "BB-40",
-      "image": "BB-40.png",
+      "image": "gacha/cards/badboss/BB-40.png",
       "name": "BB-40 「態度決定高度」",
       "storyText": "升遷名單不是你，是那個能力普通但每天幫老闆接小孩、記老闆太太生日、幫老闆報稅的人。老闆語重心長：「態度決定高度。」你終於讀懂「態度」的翻譯：忠犬程度。"
     },
     {
       "id": "BB-41",
-      "image": "BB-41.png",
+      "image": "gacha/cards/badboss/BB-41.png",
       "name": "BB-41 「要有 sense，不要什麼都問」",
       "storyText": "你問老闆細節。「要有 sense！不要什麼都問。」你不問了自己做。老闆暴怒：「怎麼不先確認？」你：「您說不要問……」老闆：「該問的還是要問！」你靈魂出竅三秒。問還是不問？「你自己判斷。」"
     },
     {
       "id": "BB-42",
-      "image": "BB-42.png",
+      "image": "gacha/cards/badboss/BB-42.png",
       "name": "BB-42 「你下班後有空嗎？」",
       "storyText": "週五晚上八點你終於要走。老闆 LINE：「下班後有空嗎？」「什麼事？」「明天早上九點客戶會議做 20 頁簡報。」你回了「好」。你恨自己回了好。但你更恨的是你知道下次還是會回好。"
     },
     {
       "id": "BB-43",
-      "image": "BB-43.png",
+      "image": "gacha/cards/badboss/BB-43.png",
       "name": "BB-43 「Logo 放大，字也放大，全部放大」",
       "storyText": "設計師做了乾淨首頁。老闆看一秒：「Logo 放大、標題放大、電話放大、地址放大、我的照片也放上去，放大。」成品像選舉公報。老闆：「這才叫大器！」設計師的靈魂碎了第十二角。"
     },
     {
       "id": "BB-44",
-      "image": "BB-44.png",
+      "image": "gacha/cards/badboss/BB-44.png",
       "name": "BB-44 「我不懂技術但這應該很簡單」",
       "storyText": "老闆：「登入頁加人臉辨識，很簡單吧？」「可以，但要三個月……」「兩週，不加預算。我看過一個 app 就有。」那 app 背後是三百人團隊和一億美金。你的團隊三個人和一台快壞的 MacBook。"
     },
     {
       "id": "BB-45",
-      "image": "BB-45.png",
+      "image": "gacha/cards/badboss/BB-45.png",
       "name": "BB-45 「格局打開，不要計較小事」",
       "storyText": "你請報加班費。老闆：「格局打開。」差旅費：「不要計較。」三百塊計程車費：要路線截圖、事由說明、三級主管簽核。你的格局只被允許在你該拿的錢上面打開。老闆的格局？用公司印表機印他小孩寒假作業。"
     },
     {
       "id": "BB-46",
-      "image": "BB-46.png",
+      "image": "gacha/cards/badboss/BB-46.png",
       "name": "BB-46 「我不管過程，我要結果」",
       "storyText": "你達成結果。老闆：「過程有問題。」改善過程。「結果呢？」都顧了。「成本太高。」壓低成本。「品質呢？」你問到底要什麼。「最低成本、最好過程、最高結果。」這不叫管理，叫念咒。"
     },
     {
       "id": "BB-47",
-      "image": "BB-47.png",
+      "image": "gacha/cards/badboss/BB-47.png",
       "name": "BB-47 「你生病？吃個藥就好了吧」",
       "storyText": "你發燒 38.5 度請假。老闆：「吃藥就好吧？下午那個會很重要你 call in。」你 38.5 度 call in 兩小時。散會後老闆：「聲音好沙啞，注意身體啊。」你在想——如果注意身體的方式是掛掉電話，會不會被記曠職。"
     },
     {
       "id": "BB-48",
-      "image": "BB-48.png",
+      "image": "gacha/cards/badboss/BB-48.png",
       "name": "BB-48 「我信任你所以不會盯你」",
       "storyText": "老闆說不盯你。然後要求：日報、週報、月報、任務開始前報告、做到一半報告、做完報告、隔天再確認一次。你花在報告的時間比做事多。你寫了一份報告：「報告老闆，我正在寫報告。」"
     },
     {
       "id": "BB-49",
-      "image": "BB-49.png",
+      "image": "gacha/cards/badboss/BB-49.png",
       "name": "BB-49 「我以前當員工比你們更拚」",
       "storyText": "老闆說以前睡公司、一天十八小時、十年沒請假。你沒說的：那是你自己的公司、你有股份、那些十八小時有多少在應酬喝酒、你那時候薪水可以買房。"
     },
     {
       "id": "BB-50",
-      "image": "BB-50.png",
+      "image": "gacha/cards/badboss/BB-50.png",
       "name": "BB-50 「你要站在我的角度想想」",
       "storyText": "你站了。你看到：年薪三百萬、每天下午三點打球、公司配 Lexus、老婆掛財務長只負責團購、兒子掛 PM 從沒管過專案。你站完了，唯一結論——你也想當老闆。你告訴他，他沒有笑。你打開 104。"
     }
